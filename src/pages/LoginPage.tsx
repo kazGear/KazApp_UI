@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { COLORS, KEYS, URL } from "../lib/Constants";
+import { COLORS, KEYS } from "../lib/Constants";
 import Button from "../components/common/Button";
 import DialogFrame from "../components/common/DialogFrame";
 import UserRegistContents from "../components/LoginPage/UserRegistContents";
 import { useCallback, useLayoutEffect, useState } from "react";
-import { useServerWithQuery } from "../hooks/common/useServerWithQuery";
 import Input from "../components/common/Input";
-import { isEmpty } from "../lib/CommonLogic";
+import { useLogin } from "../hooks/useHookOfUser";
 
 const LoginContainer = styled.div`
     text-align: center;
@@ -61,30 +60,9 @@ const LoginPage = () => {
     }
 
     // ログイン処理
-    const exeLogin = useServerWithQuery();
-    const loginHandler = useCallback( async () => {
-        try {
-            const token: string = await exeLogin(`${URL.LOGIN_USER}?loginId=${inputLoginId}&password=${inputPassword}`);
-
-            // トークン有 > ログイン成功
-            if (token != null) {
-                localStorage.setItem(KEYS.TOKEN, token);
-                localStorage.setItem(KEYS.USER_NAME, inputLoginId);
-                setToken(token);
-                setShowAlert(false);
-                window.location.href = "/IndexPage";
-            } else if (isEmpty(token)) {
-                localStorage.removeItem(KEYS.TOKEN);
-                localStorage.removeItem(KEYS.USER_NAME);
-                setShowAlert(true);
-                setTimeout(() => window.location.href = "/LoginPage", 2000);
-            }
-        } catch (err) {
-            localStorage.removeItem(KEYS.TOKEN);
-            localStorage.removeItem(KEYS.USER_NAME);
-            setShowAlert(true);
-            setTimeout(() => window.location.href = "/LoginPage", 2000);
-        }
+    const login = useLogin();
+    const loginHandler = useCallback(() => {
+        login({inputLoginId, inputPassword, setToken, setShowAlert});
     }, [inputLoginId, inputPassword]);
 
     return (
@@ -103,10 +81,10 @@ const LoginPage = () => {
                            name="password"
                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)}
                            />
-                    <br />
                     {
                         showAlert ? <Sspan>ID又はパスワードに誤りがあります。</Sspan> : ""
                     }
+                    <br />
                     <div>
                         <Button text="ログイン" onClick={loginHandler}/>
                         <br/>

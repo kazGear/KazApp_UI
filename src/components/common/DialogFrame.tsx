@@ -38,8 +38,8 @@ const SdivMessageArea = styled.div`
     z-index: 1000;
 `;
 const SimgL = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     left: 0;
     bottom: 0;

@@ -3,13 +3,13 @@ import FromToDate from "../components/common/FromTo";
 import Button from "../components/common/Button";
 import MonsterTypesList from "../components/BattleResultPage/MonsterTypesList";
 import { ChangeEvent, useCallback, useState } from "react";
-import { useServerWithQuery } from "../hooks/common/useServerWithQuery";
+import { useServerWithQuery } from "../hooks/useHookOfCommon";
 import { COLORS, URL } from "../lib/Constants";
 import { BattleReportDTO, MonsterReportDTO } from "../types/BattleReport";
 import MonsterReport from "../components/BattleResultPage/MonsterReport";
 import BattleReport from "../components/BattleResultPage/BattleReport";
 import BattleScaleList from "../components/BattleResultPage/BattleScaleList";
-import useCheckToken from "../hooks/common/useCheckToken";
+import { useCheckToken } from "../hooks/useHookOfCommon";
 
 const SdivOutsideFrame = styled.div`
     margin-top: 10px;

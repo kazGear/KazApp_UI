@@ -3,7 +3,7 @@ import Button from "../common/Button";
 import { useEffect, useState } from "react";
 
 const SdivButtonFrame = styled.div`
-    height: 60px;
+    height: 40px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

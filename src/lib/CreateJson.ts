@@ -1,9 +1,10 @@
+import { MonsterDTO, SkillDTO, StateDTO } from "../types/MonsterBattle";
 
-export const createMonstersJson = (monsters) => {
-    let result = [];
+export const createMonstersJson = (monsters: MonsterDTO[]) => {
+    let result: MonsterDTO[] = [];
 
     for (const m of monsters) {
-        const monster = {};
+        const monster: any = {};
         // 基礎パラメータ
         monster.MonsterId = m.MonsterId;
         monster.MonsterName = m.MonsterName;
@@ -15,9 +16,9 @@ export const createMonstersJson = (monsters) => {
         monster.Week = m.Week;
 
         // スキル
-        const skills = [];
+        const skills: SkillDTO[] = [];
         for (const sk of m.Skills) {
-            const skill = {};
+            const skill: any = {};
 
             skill.SkillId = sk.SkillId;
             skill.SkillName = sk.SkillName;
@@ -34,9 +35,9 @@ export const createMonstersJson = (monsters) => {
         monster.Skills = skills;
 
         // 状態
-        const status = [];
+        const status: StateDTO[] = [];
         for (const st of m.Status) {
-            const state = {};
+            const state: any = {};
 
             state.StateType = st.StateType;
             state.Name = st.Name;

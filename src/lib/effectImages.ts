@@ -60,82 +60,82 @@ import effect67 from "../images/effects/effect67.gif";
 import effect68 from "../images/effects/effect68.gif";
 import effect69 from "../images/effects/effect69.gif";
 
+interface EffectDict {
+    [key: number]: string | null;
+}
 const effectImages = (effectId: number): string => {
-    const effectImages = [];
+    const effectImages: EffectDict = {};
 
-    effectImages.push(null); // index: 0 (エフェクトなし)
-    effectImages.push(effect1);
-    effectImages.push(effect2);
-    effectImages.push(effect3);
-    effectImages.push(effect4);
-    effectImages.push(effect5);
-    effectImages.push(effect6);
-    effectImages.push(effect7);
-    effectImages.push(effect8);
-    effectImages.push(effect9);
-    effectImages.push(effect10);
-    effectImages.push(effect11);
-    effectImages.push(effect12);
-    effectImages.push(effect13);
-    effectImages.push(effect14);
-    effectImages.push(effect15);
-    effectImages.push(effect16);
-    effectImages.push(effect17);
-    effectImages.push(effect18);
-    effectImages.push(effect19);
-    effectImages.push(effect20);
-    effectImages.push(effect21);
-    effectImages.push(effect22);
-    effectImages.push(effect23);
-    effectImages.push(effect24);
-    effectImages.push(effect25);
-    effectImages.push(effect26);
-    effectImages.push(effect27);
-    effectImages.push(effect28);
-    effectImages.push(effect29);
-    effectImages.push(effect30);
-    effectImages.push(effect31);
-    effectImages.push(effect32);
-    effectImages.push(effect33);
-    effectImages.push(effect34);
-    effectImages.push(effect35);
-    effectImages.push(effect36);
-    effectImages.push(effect37);
-    effectImages.push(effect38);
-    effectImages.push(effect39);
-    effectImages.push(effect40);
-    effectImages.push(effect41);
-    effectImages.push(effect42);
-    effectImages.push(effect43);
-    effectImages.push(effect44);
-    effectImages.push(effect45);
-    effectImages.push(effect46);
-    effectImages.push(effect47);
-    effectImages.push(effect48);
-    effectImages.push(effect49);
-    effectImages.push(null); // 50
-    effectImages.push(null); // 51
-    effectImages.push(null); // 52
-    effectImages.push(null); // 53
-    effectImages.push(null); // 54
-    effectImages.push(null); // 55
-    effectImages.push(null); // 56
-    effectImages.push(null); // 57
-    effectImages.push(effect58);
-    effectImages.push(effect59);
-    effectImages.push(effect60);
-    effectImages.push(effect61);
-    effectImages.push(effect62);
-    effectImages.push(effect63);
-    effectImages.push(effect64);
-    effectImages.push(effect65);
-    effectImages.push(effect66);
-    effectImages.push(effect67);
-    effectImages.push(effect68);
-    effectImages.push(effect69);
-
-    // outOfMemory ガード（画像表示なし）
-    if (effectId >= effectImages.length) effectId = 0;
+    effectImages[0] = null; // index: 0 (エフェクトなし)
+    effectImages[1] = effect1;
+    effectImages[2] = effect2;
+    effectImages[3] = effect3;
+    effectImages[4] = effect4;
+    effectImages[5] = effect5;
+    effectImages[6] = effect6;
+    effectImages[7] = effect7;
+    effectImages[8] = effect8;
+    effectImages[9] = effect9;
+    effectImages[10] = effect10;
+    effectImages[11] = effect11;
+    effectImages[12] = effect12;
+    effectImages[13] = effect13;
+    effectImages[14] = effect14;
+    effectImages[15] = effect15;
+    effectImages[16] = effect16;
+    effectImages[17] = effect17;
+    effectImages[18] = effect18;
+    effectImages[19] = effect19;
+    effectImages[20] = effect20;
+    effectImages[21] = effect21;
+    effectImages[22] = effect22;
+    effectImages[23] = effect23;
+    effectImages[24] = effect24;
+    effectImages[25] = effect25;
+    effectImages[26] = effect26;
+    effectImages[27] = effect27;
+    effectImages[28] = effect28;
+    effectImages[29] = effect29;
+    effectImages[30] = effect30;
+    effectImages[31] = effect31;
+    effectImages[32] = effect32;
+    effectImages[33] = effect33;
+    effectImages[34] = effect34;
+    effectImages[35] = effect35;
+    effectImages[36] = effect36;
+    effectImages[37] = effect37;
+    effectImages[38] = effect38;
+    effectImages[39] = effect39;
+    effectImages[40] = effect40;
+    effectImages[41] = effect41;
+    effectImages[42] = effect42;
+    effectImages[43] = effect43;
+    effectImages[44] = effect44;
+    effectImages[45] = effect45;
+    effectImages[46] = effect46;
+    effectImages[47] = effect47;
+    effectImages[48] = effect48;
+    effectImages[49] = effect49;
+    effectImages[50] = null;
+    effectImages[51] = null;
+    effectImages[52] = null;
+    effectImages[53] = null;
+    effectImages[54] = null;
+    effectImages[55] = null;
+    effectImages[56] = null;
+    effectImages[57] = null;
+    effectImages[58] = effect58;
+    effectImages[59] = effect59;
+    effectImages[60] = effect60;
+    effectImages[61] = effect61;
+    effectImages[62] = effect62;
+    effectImages[63] = effect63;
+    effectImages[64] = effect64;
+    effectImages[65] = effect65;
+    effectImages[66] = effect66;
+    effectImages[67] = effect67;
+    effectImages[68] = effect68;
+    effectImages[69] = effect69;
 
     return effectImages[effectId] ?? "";
 }

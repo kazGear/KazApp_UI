@@ -1,15 +1,17 @@
 import { useCallback } from "react";
-import { isEmpty } from "../../lib/CommonLogic";
+import { isEmpty } from "../lib/CommonLogic";
 
-interface ArgProps {
+interface ArgPropsCheckFromTo {
     from: string;
     to: string;
     setInvalid: React.Dispatch<React.SetStateAction<boolean>>;
     setDisable: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const useCheckFromTo = () => {
-    const checkFromTo = useCallback(({from, to, setInvalid, setDisable}: ArgProps) => {
+/**
+ * from to の入力で矛盾がないか検証する
+ */
+export const useCheckFromTo = () => {
+    const checkFromTo = useCallback(({from, to, setInvalid, setDisable}: ArgPropsCheckFromTo) => {
         // from or to のみの入力は有効
         if (isEmpty(from)) {
             setInvalid(false);
@@ -33,5 +35,3 @@ const useCheckFromTo = () => {
 
     return checkFromTo;
 }
-
-export default useCheckFromTo;

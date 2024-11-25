@@ -1,9 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Button from "../common/Button";
-import { useServerWithQuery } from "../../hooks/common/useServerWithQuery";
+import { useServerWithQuery } from "../../hooks/useHookOfCommon";
 import { COLORS, KEYS, URL } from "../../lib/Constants";
 import { UserDTO } from "../../types/UserManage";
-import useCreateUsedList from "../../hooks/user/useCreateUsedList";
+import { useCreateUsedList } from "../../hooks/useHookOfUser";
 import InputUserContents from "../userRegist/InputUserContents";
 import styled from "styled-components";
 

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
 import { useCallback, useRef, useState } from "react";
-import useCheckToken from "../hooks/common/useCheckToken";
-import { useServerWithQuery } from "../hooks/common/useServerWithQuery";
+import { useCheckToken } from "../hooks/useHookOfCommon";
+import { useServerWithQuery } from "../hooks/useHookOfCommon";
 import { URL } from "../lib/Constants";
-import { useServerWithJson } from "../hooks/common/useServerWithJson";
-import useRegistResult from "../hooks/battle/useRegistResult";
+import { useServerWithJson } from "../hooks/useHookOfCommon";
+import { useRegistResult } from "../hooks/useHookOfBattle";
 import { isEmpty } from "../lib/CommonLogic";
 import MonsterWindow from "../components/battlePage/MonsterWindow";
 import CommandButtons from "../components/battlePage/CommandButtons";
@@ -20,7 +20,7 @@ const SdivOutSideFrame = styled.div`
 `;
 const SdivMonsterWindowFrame = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 `;
 
 /** * モンスター１体分のログを作成 */
@@ -41,15 +41,19 @@ const createShortLog = (battleLog: MetaDataDTO[]): [MetaDataDTO[], number] => {
 }
 
 const BattlePage = () => {
+    // モンスター関係
     const [monsters, setMonsters] = useState<MonsterDTO[]>([]); // 戦闘モンスター
     const [monsterCount, setMonsterCount] = useState(0);
     const selectMonstersCount = useRef(2);
+    // 賭け関係
     const [betMonster, setBetMonster] = useState<MonsterDTO | null>(null);
     const [betGil, setBetGil] = useState(0);
     const [battleStarted, setBattleStarted] = useState(false);
+    // サーバから送られるログ
     const [battleLog, setBattleLog] = useState<MetaDataDTO[]>([]); // １ターン・全モンスター文のログ
     const [shortLog, setShortLog] = useState<MetaDataDTO[]>([]); // １ターン・各モンスターのログ
     const [resultLog, setResultLog] = useState<MetaDataDTO | null>(null); // 勝敗結果
+    // ダイアログの表示可否
     const [showResultDialog, setShowResultDialog] = useState(false);
     const [showStartDialog, setShowStartDialog] = useState(true);
     const [showBetDialog, setShowBetDialog] = useState(false);
@@ -109,19 +113,15 @@ const BattlePage = () => {
         if (shortLog.length <= 0) return;
 
         // 勝敗判定
-        registBattleResult(
-            monsters,
-            shortLog.pop(),
-            setResultLog,
-            setShowResultDialog,
-            registResult
-        );
-
+        const lastLog: MetaDataDTO | undefined= shortLog.pop();
+        registBattleResult({
+            monsters, lastLog, setResultLog, setShowResultDialog, registResult
+        });
     }
 
     return (
         <>
-            <SdivOutSideFrame style={{display: showBattleView ? "block" : "none"}} >
+            <SdivOutSideFrame style={{display: showBattleView ? "block" : "none", overflow: "hidden"}} >
                 <SdivMonsterWindowFrame>
                     {
                         monsters.map((monster, index) => (
