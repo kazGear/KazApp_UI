@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { COLORS, SIZE } from "../../lib/Constants";
 import { useEffect, useState } from "react";
-import { useCheckFromTo } from "../../hooks/useHookOfBattleResult";
+import { useCheckFromTo } from "../../hooks/useHooksOfBattleResult";
 
 const SdivFromToFrame = styled.div`
     margin: 10px;

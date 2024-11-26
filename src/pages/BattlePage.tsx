@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
 import { useCallback, useRef, useState } from "react";
-import { useCheckToken } from "../hooks/useHookOfCommon";
-import { useServerWithQuery } from "../hooks/useHookOfCommon";
+import { useCheckToken } from "../hooks/useHooksOfCommon";
+import { useServerWithQuery } from "../hooks/useHooksOfCommon";
 import { URL } from "../lib/Constants";
-import { useServerWithJson } from "../hooks/useHookOfCommon";
-import { useRegistResult } from "../hooks/useHookOfBattle";
+import { useServerWithJson } from "../hooks/useHooksOfCommon";
+import { useRegistResult } from "../hooks/useHooksOfBattle";
 import { isEmpty } from "../lib/CommonLogic";
 import MonsterWindow from "../components/battlePage/MonsterWindow";
 import CommandButtons from "../components/battlePage/CommandButtons";
@@ -23,7 +23,9 @@ const SdivMonsterWindowFrame = styled.div`
     justify-content: center;
 `;
 
-/** * モンスター１体分のログを作成 */
+/**
+ * モンスター１体分のログを作成
+ */
 const createShortLog = (battleLog: MetaDataDTO[]): [MetaDataDTO[], number] => {
     const shortLog = [];
     let index = 0;
@@ -36,7 +38,6 @@ const createShortLog = (battleLog: MetaDataDTO[]): [MetaDataDTO[], number] => {
             return [shortLog, index];
         }
     }
-    // throw new Error("createShortLog ... error");
     return [shortLog, 0];
 }
 
@@ -45,14 +46,17 @@ const BattlePage = () => {
     const [monsters, setMonsters] = useState<MonsterDTO[]>([]); // 戦闘モンスター
     const [monsterCount, setMonsterCount] = useState(0);
     const selectMonstersCount = useRef(2);
+
     // 賭け関係
     const [betMonster, setBetMonster] = useState<MonsterDTO | null>(null);
     const [betGil, setBetGil] = useState(0);
     const [battleStarted, setBattleStarted] = useState(false);
+
     // サーバから送られるログ
     const [battleLog, setBattleLog] = useState<MetaDataDTO[]>([]); // １ターン・全モンスター文のログ
     const [shortLog, setShortLog] = useState<MetaDataDTO[]>([]); // １ターン・各モンスターのログ
     const [resultLog, setResultLog] = useState<MetaDataDTO | null>(null); // 勝敗結果
+
     // ダイアログの表示可否
     const [showResultDialog, setShowResultDialog] = useState(false);
     const [showStartDialog, setShowStartDialog] = useState(true);
@@ -61,13 +65,18 @@ const BattlePage = () => {
 
     useCheckToken();
 
-    // 戦闘モンスター数選択
+    /**
+     * 戦闘モンスター数選択
+     */
     const selectMonstersCountHandler = useCallback((e: any) => {
         selectMonstersCount.current = e.target.value;
     }, []);
 
     // モンスタ－初期化
     const fecthMonsters = useServerWithQuery();
+    /**
+     * ゲーム開始、モンスター用意
+     */
     const gameStartHandler = useCallback(async (e: any) => {
         const initMonsters = await fecthMonsters(
             URL.INIT_MONSTERS
@@ -81,8 +90,10 @@ const BattlePage = () => {
         setShowBattleView(true);
     }, [])
 
-    // 全モンスターが行動
     const moveMonsters = useServerWithJson();
+    /**
+     *  全モンスターが行動
+     */
     const battleHandler = async () => {
         const moveResult =
             await moveMonsters([...monsters], URL.BATTLE_NEXT_TURN);
@@ -92,9 +103,11 @@ const BattlePage = () => {
         setMonsterCount([...moveResult.Monsters].length);
     }
 
-    // 各モンスターのターン送り
     const registResult = useServerWithJson();
     const registBattleResult = useRegistResult();
+    /**
+     *  各モンスターのターン送り
+     */
     const nextTurnHandler = () => {
         // 例外処理・空の配列が流れてくることがある
         if (isEmpty(battleLog)) {
@@ -105,7 +118,6 @@ const BattlePage = () => {
         setShortLog([...shortLog]);
 
         const afterLog = battleLog.slice(index); // 残りのログ
-
         setBattleLog([...afterLog]);
         setMonsterCount(monsterCount - 1);
         setBattleStarted(false);
@@ -113,7 +125,7 @@ const BattlePage = () => {
         if (shortLog.length <= 0) return;
 
         // 勝敗判定
-        const lastLog: MetaDataDTO | undefined= shortLog.pop();
+        const lastLog: MetaDataDTO | undefined = shortLog.pop();
         registBattleResult({
             monsters, lastLog, setResultLog, setShowResultDialog, registResult
         });
@@ -122,6 +134,7 @@ const BattlePage = () => {
     return (
         <>
             <SdivOutSideFrame style={{display: showBattleView ? "block" : "none", overflow: "hidden"}} >
+                {/* モンスター画面 */}
                 <SdivMonsterWindowFrame>
                     {
                         monsters.map((monster, index) => (
@@ -133,6 +146,7 @@ const BattlePage = () => {
                         ))
                     }
                 </SdivMonsterWindowFrame>
+                {/* 操作部 */}
                 <CommandButtons
                     battleStartHandler={battleHandler}
                     nextTurnHandler={nextTurnHandler}

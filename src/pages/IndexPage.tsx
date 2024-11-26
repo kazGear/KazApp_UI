@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MenuTitle from "../components/common/MenuTitle";
 import { useLayoutEffect, useState } from "react";
 import { COLORS, KEYS, URL } from "../lib/Constants";
+import { useCheckLogin } from "../hooks/useHooksOfIndex";
 
 const Slink = styled(Link)`
     text-decoration: none;
@@ -23,27 +24,7 @@ const IndexPage = () => {
     const [validToken, setValidToken] = useState(false);
 
     // 初期処理
-    useLayoutEffect(() => {
-        const checkToken = async () => {
-            const token = localStorage.getItem(KEYS.TOKEN);
-
-            // ログイントークンの期限を確認
-            const option = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', },
-            }
-            const res = await fetch(`${URL.CHECK_LOGIN_TOKEN}?token=${token}`, option);
-
-            // 期限切れ
-            if (res.ok) {
-                setValidToken(true);
-            } else {
-                setValidToken(false);
-            }
-        }
-        checkToken();
-    }, []);
-
+    useCheckLogin(setValidToken);
 
     return (
         <>

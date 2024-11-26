@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS, KEYS } from "../lib/Constants";
 import Button from "../components/common/Button";
@@ -6,7 +5,7 @@ import DialogFrame from "../components/common/DialogFrame";
 import UserRegistContents from "../components/LoginPage/UserRegistContents";
 import { useCallback, useLayoutEffect, useState } from "react";
 import Input from "../components/common/Input";
-import { useLogin } from "../hooks/useHookOfUser";
+import { useLogin } from "../hooks/useHooksOfUser";
 
 const LoginContainer = styled.div`
     text-align: center;
@@ -28,12 +27,6 @@ const LoginForm = styled.form`
     left: 50%;
     transform: translate(-50%, -50%);
 }
-`;
-
-const SLink = styled(Link)`
-    display: inline-block;
-    color: ${COLORS.LINE_COLOR};
-    margin: 20px 0 0 60px;
 `;
 
 const Sspan = styled.span`

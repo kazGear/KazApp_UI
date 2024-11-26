@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { useServerWithQuery } from "./useHookOfCommon";
-import { KEYS, URL } from "./../lib/Constants";
-import { isEmpty } from "./../lib/CommonLogic";
+import { useServerWithQuery } from "./useHooksOfCommon";
+import { KEYS, URL } from "../lib/Constants";
+import { isEmpty } from "../lib/CommonLogic";
 import { useLayoutEffect } from "react";
 import { UserDTO } from "../types/UserManage";
 

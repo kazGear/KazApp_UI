@@ -3,13 +3,13 @@ import FromToDate from "../components/common/FromTo";
 import Button from "../components/common/Button";
 import MonsterTypesList from "../components/BattleResultPage/MonsterTypesList";
 import { ChangeEvent, useCallback, useState } from "react";
-import { useServerWithQuery } from "../hooks/useHookOfCommon";
+import { useServerWithQuery } from "../hooks/useHooksOfCommon";
 import { COLORS, URL } from "../lib/Constants";
 import { BattleReportDTO, MonsterReportDTO } from "../types/BattleReport";
 import MonsterReport from "../components/BattleResultPage/MonsterReport";
 import BattleReport from "../components/BattleResultPage/BattleReport";
 import BattleScaleList from "../components/BattleResultPage/BattleScaleList";
-import { useCheckToken } from "../hooks/useHookOfCommon";
+import { useCheckToken } from "../hooks/useHooksOfCommon";
 
 const SdivOutsideFrame = styled.div`
     margin-top: 10px;
@@ -80,6 +80,7 @@ const BattleResultPage = () => {
     return (
         <SdivOutsideFrame>
             <SdivOptionFrame>
+                {/* 検索条件部 */}
                 <SdivOption>
                     <Sh1Title>モンスター戦績</Sh1Title>
                     <MonsterTypesList setMonsterTypeId={setMonsterTypeId}/>
@@ -92,7 +93,7 @@ const BattleResultPage = () => {
                             }}
                             />
                 </SdivOption>
-
+                {/* 検索条件部 */}
                 <SdivOption>
                     <Sh1Title>戦闘結果</Sh1Title>
                     <BattleScaleList changeBattleScaleHandler={changeBattleScaleHandler}/>
@@ -113,10 +114,11 @@ const BattleResultPage = () => {
             </SdivOptionFrame>
 
             <SdivReportFrame>
+                {/* レポート部 */}
                 <SdivReport>
                     <MonsterReport monsterReport={monsterReport}/>
                  </SdivReport>
-
+                {/* レポート部 */}
                 <SdivReport>
                     <BattleReport battleReport={battleReport} />
                 </SdivReport>

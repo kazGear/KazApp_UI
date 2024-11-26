@@ -1,5 +1,5 @@
 import { ChangeEvent, useLayoutEffect, useState } from "react";
-import { useServerWithQuery } from "../../hooks/useHookOfCommon";
+import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import Select from "../common/Select";
 import { URL } from "../../lib/Constants";
 import { MonsterTypeDTO } from "../../types/BattleReport";

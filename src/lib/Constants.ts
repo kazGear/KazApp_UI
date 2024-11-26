@@ -2,11 +2,6 @@ const ACCENT_COLOR: string = "#0aff84";
 const ACCENT_COLOR2: string = "#F05F8D";
 const ALERT_COLOR: string = "red";
 export const COLORS = {
-    BORDER_COLOR: "lightgray",
-
-    BUTTON_COLOR: `${ACCENT_COLOR}`,
-    BUTTON_DISABLED: 0.3,
-
     MAIN_FONT_COLOR: "gray",
     ACCENT_FONT_COLOR: `${ACCENT_COLOR}`,
     ACCENT_FONT_COLOR2: `${ACCENT_COLOR2}`,
@@ -15,21 +10,22 @@ export const COLORS = {
     CAPTION_FONT_COLOR: "#33cc99",
     BUTTON_FORN_COLOR: "gray",
 
-    THEME_COLOR: "#7fffd4",
-    SHADOW_COLOR: "#132c0d",
-
+    BORDER_COLOR: "lightgray",
     LINE_COLOR: "blue",
 
+    SHADOW_COLOR: "#132c0d",
+    DIALOG_SHADOW: "gray",
+
+    BUTTON_COLOR: `${ACCENT_COLOR}`,
+    BUTTON_DISABLED: 0.3,
+
+    THEME_COLOR: "#7fffd4",
+
     DIALOG_FRAME: `${ACCENT_COLOR}`,
-    DIALOG_SHADOW: "gray"
 } as const;
 
 export const SIZE = {
     INPUT_HEIGHT: "22px"
-} as const;
-
-export const SESSION_STORAGE_KEYS = {
-    USER_NAME: "userName",
 } as const;
 
 export const STATE_TYPE = {
