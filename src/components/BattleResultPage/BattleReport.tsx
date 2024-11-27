@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { BattleReportDTO } from "../../types/BattleReport";
 import { COLORS } from "../../lib/Constants";
 import monsterImages from "../../lib/MonsterImages";
+import React from "react";
 
 const Stable = styled.table`
     width: 100%;
@@ -51,10 +52,10 @@ const BattleReport = ({battleReport}: ArgProps) => {
             {
                 battleReport.map((report, index) => {
                     return (
-                        <>
+                        <React.Fragment key={index}>
                         { report.Serial === 1 ? // ヘッダーは１試合に１つ
                             <tr>
-                                <StdHeader colSpan={4}>
+                                <StdHeader colSpan={4} >
                                     No. {report.BattleId}
                                     &emsp;&emsp;{report.BattleEndDateStr}
                                     &emsp;{report.BattleEndTimeStr}
@@ -62,7 +63,7 @@ const BattleReport = ({battleReport}: ArgProps) => {
                             </tr>
                             : ""
                         }
-                            <tr>
+                            <tr >
                                 <Std1>{report.Serial}</Std1>
                                 <Std2>{report.MonsterName}</Std2>
                                 <Std3>
@@ -70,7 +71,7 @@ const BattleReport = ({battleReport}: ArgProps) => {
                                 </Std3>
                                 <Std4>{report.IsWin ? "Winner !!" : ""}</Std4>
                             </tr>
-                        </>
+                        </React.Fragment>
                     )
                 })
             }
