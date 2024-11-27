@@ -12,6 +12,8 @@ const Sinput = styled.input`
     color: ${COLORS.MAIN_FONT_COLOR};
     height: ${SIZE.INPUT_HEIGHT};
     width: 100px;
+    border: 1px solid ${COLORS.BORDER_COLOR};
+    box-shadow: ${COLORS.DIALOG_SHADOW} 1px 1px;
 `;
 const SpAlertMessage = styled.p`
     color: ${COLORS.ALERT_MESSAGE_COLOR};

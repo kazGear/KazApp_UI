@@ -3,11 +3,6 @@ import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import Select from "../common/Select";
 import { URL } from "../../lib/Constants";
 import { MonsterTypeDTO } from "../../types/BattleReport";
-import styled from "styled-components";
-
-const SdivListFrame = styled.div`
-    margin: 10px;
-`;
 
 interface ArgProps {
     setMonsterTypeId: React.Dispatch<React.SetStateAction<string>>;
@@ -30,9 +25,8 @@ const MonsterTypesList = ({setMonsterTypeId}: ArgProps) => {
     }
 
     return (
-        <SdivListFrame>
-            <label>モンスター種</label>
-            <Select onChange={changeMonsterTypeHandler}>
+        <>
+            <Select title="モンスター種" onChange={changeMonsterTypeHandler}>
                 <option value="0">指定なし</option>
                 {
                     monsterTypes.map((monster, index) => {
@@ -43,7 +37,7 @@ const MonsterTypesList = ({setMonsterTypeId}: ArgProps) => {
                     )})
                 }
             </Select>
-        </SdivListFrame>
+        </>
     );
 }
 

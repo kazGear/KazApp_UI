@@ -83,5 +83,7 @@ export const URL = {
 
 export const KEYS = {
     TOKEN: "token",
-    USER_NAME: "userName"
+    USER_NAME: "userName",
+    ORDER_BY_ASC: "ASC",
+    ORDER_BY_DESC: "DESC"
 } as const;

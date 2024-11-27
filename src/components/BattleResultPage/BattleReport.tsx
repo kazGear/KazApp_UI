@@ -3,6 +3,7 @@ import { BattleReportDTO } from "../../types/BattleReport";
 import { COLORS } from "../../lib/Constants";
 import monsterImages from "../../lib/MonsterImages";
 import React from "react";
+import Button from "../common/Button";
 
 const Stable = styled.table`
     width: 100%;

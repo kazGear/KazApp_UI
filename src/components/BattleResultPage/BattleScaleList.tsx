@@ -11,9 +11,8 @@ interface ArgProps {
 
 const BattleScaleList = ({changeBattleScaleHandler}: ArgProps) => {
     return (
-        <SdivFrame>
-            <label>対戦規模</label>
-            <Select onChange={changeBattleScaleHandler}>
+        <>
+            <Select title="対戦規模" onChange={changeBattleScaleHandler}>
                 <option value="0">指定なし</option>
                 <option value="2">２匹戦</option>
                 <option value="3">３匹戦</option>
@@ -21,7 +20,7 @@ const BattleScaleList = ({changeBattleScaleHandler}: ArgProps) => {
                 <option value="5">５匹戦</option>
                 <option value="6">６匹戦</option>
             </Select>
-        </SdivFrame>
+        </>
     );
 };
 

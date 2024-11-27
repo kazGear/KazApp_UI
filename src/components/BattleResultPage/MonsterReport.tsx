@@ -2,49 +2,54 @@ import styled from "styled-components";
 import { MonsterReportDTO } from "../../types/BattleReport";
 import { COLORS } from "../../lib/Constants";
 import monsterImages from "../../lib/MonsterImages";
+import { MouseEventHandler, useState } from "react";
 
 const Stable = styled.table`
     width: 100%;
     border-collapse: collapse;
     position: relative;
 `;
-const StrHeaderRow = styled.tr`
-    // なぜか１００％だと大きくはみだす
-    width: 45%;
-    max-width: 50%;
+const StHead = styled.thead`
+    height: 35px;
+    max-height: 35px;
     color: ${COLORS.CAPTION_FONT_COLOR};
+    border-top: ${COLORS.BORDER_COLOR} 1px solid;
+    border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
     position: sticky;
     top: 0;
-    background-color: white;
+    transform: translateY(-1px); // 上にスクロールしたものが見えてしまうので蓋をする
     font-weight: bold;
-    // 上にスクロールしたものが見えてしまうので蓋をする
-    transform: translateY(-1px);
+    background-color: white;
 `;
 const Std1 = styled.td`
-    width: 34%;
+    width: 40%;
     height: 35px;
     border-top: ${COLORS.BORDER_COLOR} 1px solid;
     border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
     padding-left: 20px;
     `;
 const Std2 = styled.td`
+    width: 12%;
+    height: 35px;
     border-top: ${COLORS.BORDER_COLOR} 1px solid;
     border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
-    width: 12%;
     text-align: left;
 `;
 const Std3 = styled.td`
-    width: 18%;
+    width: 16%;
+    height: 35px;
     border-top: ${COLORS.BORDER_COLOR} 1px solid;
     border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
 `;
 const Std4 = styled.td`
-    width: 18%;
+    width: 16%;
+    height: 35px;
     border-top: ${COLORS.BORDER_COLOR} 1px solid;
     border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
 `;
 const Std5 = styled.td`
-    width: 18%;
+    width: 16%;
+    height: 35px;
     border-top: ${COLORS.BORDER_COLOR} 1px solid;
     border-bottom: ${COLORS.BORDER_COLOR} 1px solid;
 `;
@@ -53,23 +58,33 @@ const Simg = styled.img`
     height: 30px;
     vertical-align: middle;
 `;
+const Sradio = styled.input`
+    margin-left: 6px;
+`;
+
 interface ArgProps {
     monsterReport: MonsterReportDTO[];
+    setSortType:  React.Dispatch<React.SetStateAction<string>>;
 }
 
-const MonsterReport = ({monsterReport}: ArgProps) => {
-    return (
+const MonsterReport = ({monsterReport, setSortType}: ArgProps) => {
+    // ソート項目
+    const sortHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSortType(e.target.value);
+    }
+
+   return (
         <div>
             <Stable>
-                <thead >
-                    <StrHeaderRow >
-                        <Std1>モンスター名</Std1>
+                <StHead>
+                    <tr>
+                        <Std1><label>モンスター名<Sradio type="radio" name="sortType" value="1" onChange={sortHandler}/></label></Std1>
                         <Std2></Std2>
-                        <Std3>勝利数</Std3>
-                        <Std4>対戦数</Std4>
-                        <Std5>勝率</Std5>
-                    </StrHeaderRow>
-                </thead>
+                        <Std3><label>勝利数<Sradio type="radio" name="sortType" value="2" onChange={sortHandler}/></label></Std3>
+                        <Std4><label>対戦数<Sradio type="radio" name="sortType" value="3" onChange={sortHandler}/></label></Std4>
+                        <Std5><label>勝率<Sradio type="radio" name="sortType" value="4" onChange={sortHandler}/></label></Std5>
+                    </tr>
+                </StHead>
                 <tbody>
                 {
                     monsterReport.map((report) => {

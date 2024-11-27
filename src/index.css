@@ -8,6 +8,7 @@ body {
   font-size: 13px;
   color:gray;
   height: 100vh;
+  overflow: hidden;
 }
 
 code {
