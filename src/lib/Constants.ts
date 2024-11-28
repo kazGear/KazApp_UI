@@ -61,11 +61,11 @@ export const DAMAGE_VIEW = {
 // 環境でドメインが変化
 const DOMAIN = {
     LOCAL_HOST_API: `http://localhost:5000`,
-    XSERVER_API: `https://try-the-work.net`,
+    XSERVER_API: `https://kazapp-trial.com`,
 }
 // ドメインを決定 // デプロイ前に確認
-const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
-// const ENVIRONMENT = DOMAIN.XSERVER_API;
+// const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
+const ENVIRONMENT = DOMAIN.XSERVER_API;
 export const URL = {
     INIT_MONSTERS: `${ENVIRONMENT}/api/battle/init`,
     BET_RATE: `${ENVIRONMENT}/api/battle/betRate`,

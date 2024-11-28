@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { MonsterReportDTO } from "../../types/BattleReport";
 import { COLORS } from "../../lib/Constants";
 import monsterImages from "../../lib/MonsterImages";
-import { MouseEventHandler, useState } from "react";
 
 const Stable = styled.table`
     width: 100%;
