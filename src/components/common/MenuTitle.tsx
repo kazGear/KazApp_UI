@@ -4,7 +4,7 @@ const SmenuTitle = styled.h2`
     height: 40px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 60px;
     border-radius: 10px;
     border-collapse: collapse;
 `;

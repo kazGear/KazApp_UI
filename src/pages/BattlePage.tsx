@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useCheckToken } from "../hooks/useHooksOfCommon";
 import { useServerWithQuery } from "../hooks/useHooksOfCommon";
-import { URL } from "../lib/Constants";
+import { KEYS, URL } from "../lib/Constants";
 import { useServerWithJson } from "../hooks/useHooksOfCommon";
 import { useRegistResult } from "../hooks/useHooksOfBattle";
 import { isEmpty } from "../lib/CommonLogic";
@@ -13,6 +13,7 @@ import MessageWindow from "../components/battlePage/MessageWindow";
 import DialogGameStart from "../components/battlePage/DialogGameStart";
 import DialogGameBet from "../components/battlePage/DialogBet";
 import DialogBattleResult from "../components/battlePage/DialogBattleResult";
+import { logDOM } from "@testing-library/react";
 
 const SdivOutSideFrame = styled.div`
     position: relative;
@@ -63,7 +64,13 @@ const BattlePage = () => {
     const [showBetDialog, setShowBetDialog] = useState(false);
     const [showBattleView, setShowBattleView] = useState(false);
 
+    const [loginId, setLoginId] = useState<string | null>("");
+
     useCheckToken();
+
+    // useEffect(() => {
+    //     setLoginId(localStorage.getItem(KEYS.USER_NAME));
+    // }, []);
 
     /**
      * 戦闘モンスター数選択
@@ -79,9 +86,7 @@ const BattlePage = () => {
      */
     const gameStartHandler = useCallback(async (e: any) => {
         const initMonsters = await fecthMonsters(
-            URL.INIT_MONSTERS
-            + `?selectMonstersCount=${selectMonstersCount.current}` // クエリパラメータ
-        );
+            `${URL.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${localStorage.getItem(KEYS.USER_NAME)}`);
         setMonsters(initMonsters);
         setMonsterCount(initMonsters.length);
         // 画面切り替え
@@ -92,7 +97,7 @@ const BattlePage = () => {
 
     const moveMonsters = useServerWithJson();
     /**
-     *  全モンスターが行動
+     *  全モンスターが行動。戦闘ログを取得
      */
     const battleHandler = async () => {
         const moveResult =
@@ -103,10 +108,11 @@ const BattlePage = () => {
         setMonsterCount([...moveResult.Monsters].length);
     }
 
-    const registResult = useServerWithJson();
-    const registBattleResult = useRegistResult();
+    const insertResult = useServerWithJson();
+    const insertBattleResult = useRegistResult();
+    const insertUserResist = useServerWithQuery();
     /**
-     *  各モンスターのターン送り
+     *  各モンスターのターン送り。戦闘ログを元に描画、表現を行う
      */
     const nextTurnHandler = () => {
         // 例外処理・空の配列が流れてくることがある
@@ -122,13 +128,19 @@ const BattlePage = () => {
         setMonsterCount(monsterCount - 1);
         setBattleStarted(false);
 
-        if (shortLog.length <= 0) return;
-
         // 勝敗判定
         const lastLog: MetaDataDTO | undefined = shortLog.pop();
-        registBattleResult({
-            monsters, lastLog, setResultLog, setShowResultDialog, registResult
+
+        insertBattleResult({
+            monsters, lastLog, setResultLog, setShowResultDialog, insertResult
         });
+        if (!isEmpty(lastLog) && lastLog!.WinnerMonsterId > 0) {
+            insertUserResist(`${URL.RECORD_USER_RESULT}?betMonsterId=${betMonster?.MonsterId}
+                                                       &betGil=${betGil}
+                                                       &betRate=${betMonster!.BetRate}
+                                                       &winningMonsterId=${lastLog?.WinnerMonsterId}
+                                                       &loginId=${localStorage.getItem(KEYS.USER_NAME)}`);
+        }
     }
 
     return (

@@ -16,7 +16,7 @@ export interface MetaDataDTO {
 
 export interface MonsterDTO {
     MonsterId: number;
-    MonsterName: string;
+    MonsterName?: string;
     MonsterType: number;
     Hp: number;
     MaxHp: number;

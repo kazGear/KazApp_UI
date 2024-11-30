@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import { COLORS, KEYS } from "../../lib/Constants";
-import { useEffect, useState } from "react";
+import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { isEmpty } from "../../lib/CommonLogic";
+import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 
 const Sheader = styled.header`
     height: 50px;
@@ -31,31 +32,45 @@ const Sspan = styled.span`
 interface ArgProps { title: string; }
 
 const AppHeader = ({title}: ArgProps) => {
+    const [loginId, setLoginId] = useState<string | null>("");
     const [dispName, setDispName] = useState<string | null>("");
 
     const navigate = useNavigate();
     const currentUrl: string = window.location.href;
-    const isRootPage: boolean = currentUrl.endsWith("/");
+    const isRootPage: boolean = currentUrl.endsWith("/"); // 最初のページ
+    const isRootPage2: boolean = currentUrl.endsWith("/IndexPage");
+
+    // ユーザー名取得のため
+    useLayoutEffect(() => {
+        const id: string | null = localStorage.getItem(KEYS.USER_NAME);
+        setLoginId(id);
+    }, [loginId]);
 
     // 表示名取得
+    const select = useServerWithQuery();
     useEffect(() => {
-        const loginName: string | null = localStorage.getItem(KEYS.USER_NAME);
-        setDispName(loginName);
-    }, [dispName]);
+        const selectName = async () => {
+            const name: string | null = await select(`${URL.SELECT_LOGIN_USER}?loginId=${loginId}`);
+            setDispName(name);
+        }
+        selectName();
+    }, [loginId, dispName]);
 
     return (
         <Sheader>
             <Sh1>{title}</Sh1>
-            <SdivButtonFrame style={{display: isRootPage ? "none" : ""}}>
+            <SdivButtonFrame style={{
+                display: isRootPage || isRootPage2 ? "none" : ""
+                }}>
                 <Button text="モンスター闘技場"
                         width={125}
-                        onClick={() => navigate("/battlePage")}/>
+                        onClick={() => navigate("/BattlePage")}/>
                 <Button text="闘技場戦績"
                         width={90}
-                        onClick={() => navigate("/battleResultPage")}/>
-                <Button text="工事中"
-                        width={60}
-                        onClick={() => {}}/>
+                        onClick={() => navigate("/BattleResultPage")}/>
+                <Button text="ユーザーページ"
+                        width={120}
+                        onClick={() => navigate("/UserPage")}/>
                 <Button text="工事中"
                         width={60}
                         onClick={() => {}}/>

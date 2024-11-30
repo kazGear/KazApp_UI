@@ -1,4 +1,12 @@
 /*
+アニメ－ションなし
+*/
+.noneAnimation {
+  background-color: #0aff84;
+  box-shadow: darkgrey 28px 10px;
+}
+
+/*
 点滅
 */
 @keyframes flash {
@@ -41,16 +49,16 @@
   position: absolute;
   z-index: -10;
   width: 95%;
-  height: 55px;
+  height: 60px;
   background: #a3ffbc71;
   transform: translate3d(0,0,0);
   border-radius: 10px;
 }
 .ripple:before {
-  animation: anime 2s ease-out infinite;
+  animation: anime 3s ease-out infinite;
 }
 .ripple:after {
-  animation: anime 2s ease-out 2s infinite;
+  animation: anime 3s ease-out 3s infinite;
 }
 @keyframes anime {
   0% {

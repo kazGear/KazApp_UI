@@ -23,12 +23,12 @@ const SdivOptionFrame = styled.div`
     margin: 0 20px 20px 20px;
 `;
 const SdivOptionL = styled.div`
-    width: 50%;
+    width: 55%;
     height: 100%;
     position: relative;
 `;
 const SdivOptionR = styled.div`
-    width: 40%;
+    width: 35%;
     height: 100%;
     position: relative;
 `;
@@ -37,12 +37,12 @@ const SdivReportFrame = styled.div`
     justify-content: space-around;
 `;
 const SdivReportL = styled.div`
-    width: 50%;
+    width: 55%;
     max-height: 450px;
     overflow-y: scroll;
 `;
 const SdivReportR = styled.div`
-    width: 40%;
+    width: 35%;
     max-height: 450px;
     overflow-y: scroll;
 `;
@@ -75,8 +75,8 @@ const BattleResultPage = () => {
         const monsterReport: MonsterReportDTO[]
             = await fetchServerUseQuery(
                 URL.MONSTER_REPORTS + `?monsterTypeId=${monsterTypeId}
-                                                      &sortType=${sortType}
-                                                      &isAscOrder=${isAscOrder}`
+                                       &sortType=${sortType}
+                                       &isAscOrder=${isAscOrder}`
             );
         setMonsterReport(monsterReport);
     }, [monsterTypeId, sortType, isAscOrder]);
@@ -85,8 +85,9 @@ const BattleResultPage = () => {
     const fetchBattleReportHandler = useCallback(async () => {
         const battleReport: BattleReportDTO[]
             = await fetchServerUseQuery(
-                   URL.BATTLE_REPORTS
-                + `?battleScale=${battleScale}&from=${from}&to=${to}`
+                  `${URL.BATTLE_REPORTS}?battleScale=${battleScale}
+                                        &from=${from}
+                                        &to=${to}`
             );
         setBattleReport(battleReport);
     }, [battleScale, from, to]);

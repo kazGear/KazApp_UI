@@ -87,7 +87,7 @@ const BattleResultContents = (
             <SdivBetResultFrame>
                 <h2>(∩´∀｀)∩<Sspan>獲得賞金&emsp;</Sspan>
                 {
-                    strike ? <Sspan>{Math.floor(betGil * betMonster.BetRate)}</Sspan> : <Sspan>0</Sspan>
+                    strike ? <Sspan>{Math.trunc(betGil * betMonster.BetRate)}</Sspan> : <Sspan>0</Sspan>
                 } Gil
                 </h2>
             </SdivBetResultFrame>

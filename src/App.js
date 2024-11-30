@@ -8,6 +8,7 @@ import MyCartPage from './pages/MyCartPage';
 import LoginPage from "./pages/LoginPage";
 import AppHeader from './components/common/AppHeader';
 import BattleResultPage from './pages/BattleResultPage';
+import UserPage from "./pages/UserPage";
 
 function App() {
     return (
@@ -15,13 +16,14 @@ function App() {
             <AppHeader title="KazApp" />
             <Routes>
                 <Route path={"/"} element={<IndexPage />} />
-                <Route path={"/indexPage"} element={<IndexPage />} />
-                <Route path={"/loginPage"} element={<LoginPage />} />
+                <Route path={"/IndexPage"} element={<IndexPage />} />
+                <Route path={"/LoginPage"} element={<LoginPage />} />
                 <Route path={"/myCartPage"} element={<MyCartPage />} />
                 <Route path={"/myPage"} element={<MyPage />} />
                 <Route path={"/ShopPage"} element={<ShopPage />} />
-                <Route path={"/battlePage"} element={<BattlePage />} />
-                <Route path={"/battleResultPage"} element={<BattleResultPage />} />
+                <Route path={"/BattlePage"} element={<BattlePage />} />
+                <Route path={"/BattleResultPage"} element={<BattleResultPage />} />
+                <Route path={"/UserPage"} element={<UserPage />} />
             </Routes>
         </BrowserRouter>
     );

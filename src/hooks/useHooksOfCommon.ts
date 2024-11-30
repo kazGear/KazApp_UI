@@ -20,7 +20,7 @@ export const useCheckToken = async () => {
 
             // 期限切れ
             if (!res.ok) {
-                window.location.href = "/IndexPage";
+                window.location.href = "/LoginPage";
                 return false;
             }
         }

@@ -71,6 +71,7 @@ export const URL = {
     BET_RATE: `${ENVIRONMENT}/api/battle/betRate`,
     BATTLE_NEXT_TURN: `${ENVIRONMENT}/api/battle/nextTurn`,
     RECORD_BATTLE_RESULT: `${ENVIRONMENT}/api/battle/recordResults`,
+    RECORD_USER_RESULT: `${ENVIRONMENT}/api/user/recordUserResults`,
     INIT_BATTLE_REPORT: `${ENVIRONMENT}/api/battleReport/init`,
     MONSTER_REPORTS: `${ENVIRONMENT}/api/battleReport/monsterReport`,
     BATTLE_REPORTS: `${ENVIRONMENT}/api/battleReport/battleReport`,

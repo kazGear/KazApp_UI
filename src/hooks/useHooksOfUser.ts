@@ -21,7 +21,8 @@ export const useLogin = () => {
         inputLoginId, inputPassword, setToken, setShowAlert
     }: ArgPropsLogin) => {
         try {
-            const token: string = await exeLogin(`${URL.LOGIN_USER}?loginId=${inputLoginId}&password=${inputPassword}`);
+            const token: string = await exeLogin(`${URL.LOGIN_USER}?loginId=${inputLoginId}
+                                                                   &password=${inputPassword}`);
 
             // トークン有 >>> ログイン成功
             if (token != null) {
