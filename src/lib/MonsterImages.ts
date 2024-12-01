@@ -154,7 +154,7 @@ const monsterImages = (monsterId: number) => {
     monsterImages[61] = packn1;
     monsterImages[62] = packn2;
     monsterImages[63] = packn3;
-    monsterImages[65] = packn4;
+    monsterImages[64] = packn4;
     monsterImages[65] = miniDevil1;
     monsterImages[66] = miniDevil2;
     monsterImages[67] = ogreBox1;

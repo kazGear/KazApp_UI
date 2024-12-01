@@ -13,7 +13,9 @@ export interface MonsterReportDTO {
 
 export interface BattleReportDTO {
     BattleId: number;
+    BattleEndDate: Date;
     BattleEndDateStr: string;
+    BattleEndTime: string;
     BattleEndTimeStr: string;
     Serial: number;
     MonsterId: number;

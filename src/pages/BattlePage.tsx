@@ -68,9 +68,9 @@ const BattlePage = () => {
 
     useCheckToken();
 
-    // useEffect(() => {
-    //     setLoginId(localStorage.getItem(KEYS.USER_NAME));
-    // }, []);
+    useEffect(() => {
+        setLoginId(localStorage.getItem(KEYS.USER_ID));
+    }, []);
 
     /**
      * 戦闘モンスター数選択
@@ -86,14 +86,14 @@ const BattlePage = () => {
      */
     const gameStartHandler = useCallback(async (e: any) => {
         const initMonsters = await fecthMonsters(
-            `${URL.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${localStorage.getItem(KEYS.USER_NAME)}`);
+            `${URL.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${loginId}`);
         setMonsters(initMonsters);
         setMonsterCount(initMonsters.length);
         // 画面切り替え
         setShowStartDialog(false);
         setShowBetDialog(true);
         setShowBattleView(true);
-    }, [])
+    }, [loginId])
 
     const moveMonsters = useServerWithJson();
     /**
@@ -139,7 +139,7 @@ const BattlePage = () => {
                                                        &betGil=${betGil}
                                                        &betRate=${betMonster!.BetRate}
                                                        &winningMonsterId=${lastLog?.WinnerMonsterId}
-                                                       &loginId=${localStorage.getItem(KEYS.USER_NAME)}`);
+                                                       &loginId=${loginId}`);
         }
     }
 

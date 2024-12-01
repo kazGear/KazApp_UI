@@ -1,16 +1,11 @@
 import styled from "styled-components";
-import FromToDate from "../components/common/FromTo";
-import Button from "../components/common/Button";
-import MonsterTypesList from "../components/BattleResultPage/MonsterTypesList";
-import { ChangeEvent, useCallback, useState } from "react";
-import { useServerWithQuery } from "../hooks/useHooksOfCommon";
-import { COLORS, KEYS, URL } from "../lib/Constants";
+import { useState } from "react";
 import { BattleReportDTO, MonsterReportDTO } from "../types/BattleReport";
 import MonsterReport from "../components/BattleResultPage/MonsterReport";
 import BattleReport from "../components/BattleResultPage/BattleReport";
-import BattleScaleList from "../components/BattleResultPage/BattleScaleList";
 import { useCheckToken } from "../hooks/useHooksOfCommon";
-import Select from "../components/common/Select";
+import BattleReportController from "../components/BattleResultPage/BattleReportController";
+import MonsterReportController from "../components/BattleResultPage/MonsterReportController";
 
 const SdivOutsideFrame = styled.div`
     margin-top: 10px;
@@ -19,7 +14,7 @@ const SdivOutsideFrame = styled.div`
 const SdivOptionFrame = styled.div`
     display: flex;
     justify-content: space-around;
-    height: 120px;
+    height: 140px;
     margin: 0 20px 20px 20px;
 `;
 const SdivOptionL = styled.div`
@@ -38,111 +33,33 @@ const SdivReportFrame = styled.div`
 `;
 const SdivReportL = styled.div`
     width: 55%;
-    max-height: 450px;
+    max-height: 430px;
     overflow-y: scroll;
 `;
 const SdivReportR = styled.div`
     width: 35%;
-    max-height: 450px;
+    max-height: 430px;
     overflow-y: scroll;
-`;
-const Sh1Title = styled.h1`
-    font-size: 16px;
-    color: ${COLORS.CAPTION_FONT_COLOR};
-    margin-top: 5px;
 `;
 
 const BattleResultPage = () => {
-    // レポート系
     const [monsterReport, setMonsterReport] = useState<MonsterReportDTO[]>([]);
     const [battleReport, setBattleReport] = useState<BattleReportDTO[]>([]);
-    // 日付系
-    const [from, setFrom] = useState("");
-    const [to, setTo] = useState("");
-    // 送信パラメータ系
-    const [monsterTypeId, setMonsterTypeId] = useState("0");
     const [sortType, setSortType] = useState("0");
-    const [isAscOrder, setIsAscOrder] = useState(true);
-    const [battleScale, setBattleScale] = useState("0");
-
-    const [disable, setDisable] = useState(false);
-    const fetchServerUseQuery = useServerWithQuery();
 
     useCheckToken();
-
-    // モンスタ毎のレポートを取得
-    const fetchMonsterReportHandler = useCallback(async () => {
-        const monsterReport: MonsterReportDTO[]
-            = await fetchServerUseQuery(
-                URL.MONSTER_REPORTS + `?monsterTypeId=${monsterTypeId}
-                                       &sortType=${sortType}
-                                       &isAscOrder=${isAscOrder}`
-            );
-        setMonsterReport(monsterReport);
-    }, [monsterTypeId, sortType, isAscOrder]);
-
-    // 戦闘毎のレポートを取得
-    const fetchBattleReportHandler = useCallback(async () => {
-        const battleReport: BattleReportDTO[]
-            = await fetchServerUseQuery(
-                  `${URL.BATTLE_REPORTS}?battleScale=${battleScale}
-                                        &from=${from}
-                                        &to=${to}`
-            );
-        setBattleReport(battleReport);
-    }, [battleScale, from, to]);
-
-    // 戦闘規模の選択
-    const changeBattleScaleHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        setBattleScale(e.target.value);
-    }
-
-    // ソート制御
-    const sortHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        if (e.target.value === KEYS.ORDER_BY_ASC) {
-            setIsAscOrder(true);
-        } else {
-            setIsAscOrder(false);
-        }
-    }
 
     return (
         <SdivOutsideFrame>
             <SdivOptionFrame>
                 {/* 検索条件部 */}
                 <SdivOptionL>
-                    <Sh1Title>モンスター戦績</Sh1Title>
-                    <MonsterTypesList setMonsterTypeId={setMonsterTypeId}/>
-                    <Select title="ソート順" onChange={sortHandler}>
-                        <option value={KEYS.ORDER_BY_ASC}>昇順</option>
-                        <option value={KEYS.ORDER_BY_DESC}>降順</option>
-                    </Select>
-                    <Button text="検索"
-                            onClick={fetchMonsterReportHandler}
-                            styleObj={{
-                                position: "absolute",
-                                bottom: "0",
-                                right: "0"
-                            }}
-                            />
+                    <BattleReportController setMonsterReport={setMonsterReport}
+                                            sortType={sortType}/>
                 </SdivOptionL>
                 {/* 検索条件部 */}
                 <SdivOptionR>
-                    <Sh1Title>戦闘結果</Sh1Title>
-                    <BattleScaleList changeBattleScaleHandler={changeBattleScaleHandler}/>
-                    <FromToDate labelText="期間"
-                                setDisable={setDisable}
-                                from={from} setFrom={setFrom}
-                                to={to} setTo={setTo} />
-                    <Button text="検索"
-                            onClick={fetchBattleReportHandler}
-                            disabled={disable}
-                            styleObj={{
-                                position: "absolute",
-                                bottom: "0",
-                                right: "0"
-                            }}
-                            />
+                    <MonsterReportController setBattleReport={setBattleReport}/>
                 </SdivOptionR>
             </SdivOptionFrame>
 

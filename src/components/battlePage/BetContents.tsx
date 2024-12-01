@@ -3,7 +3,10 @@ import Button from "../common/Button";
 import React, { useLayoutEffect, useState } from "react";
 import MonsterSelector from "./MonsterSelector";
 import { MonsterDTO } from "../../types/MonsterBattle";
-import { COLORS } from "../../lib/Constants";
+import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
+import { UserDTO } from "../../types/UserManage";
+import { setConstantValue } from "typescript";
 
 const SdivInputFrame = styled.div`
     display: flex;
@@ -24,15 +27,31 @@ interface ArgProps {
 const BetContents = (
     {monsters, setBetMonster, setBetGil, setShowDialog}: ArgProps
 ) => {
+    const [user, setUser] = useState<UserDTO | null>(null);
+    const [cash, setCash] = useState("0");
+    const [cashLimit, setCashLimit] = useState(0);
+
     // 選択したモンスターに賭ける
     const rowClickHandler = (row: any) => {
         setBetMonster(row);
     }
 
+    // ユーザ情報
+    const select = useServerWithQuery();
+    useLayoutEffect(() => {
+        const selectUser = async () => {
+            const user: UserDTO = await select(`${URL.USER_INFO}?loginId=${localStorage.getItem(KEYS.USER_ID)}`);
+            setUser(user);
+            setCash(user.Cash.toLocaleString());
+            setCashLimit(user.Cash);
+        }
+        selectUser();
+    }, []);
+
     // 掛け金検証
     const [betError, setBetError] = useState(false);
     const validBet = (e: any) => {
-        if (e.target.value < 0 || e.target.value > 999999) {
+        if (e.target.value < 0 || cashLimit < e.target.value) {
             setBetError(true);
         } else if (!String(e.target.value).match(/^[1-9]\d*$/g)) {
             setBetError(true);
@@ -62,7 +81,7 @@ const BetContents = (
             />
 
             <p style={{margin: "10px 0 0 0"}}>賭け金を入力してください</p>
-
+            <span>所持金： {cash}&nbsp;Gil</span>
             <SdivInputFrame>
                 <input
                     type="number"
@@ -79,7 +98,9 @@ const BetContents = (
             </SdivInputFrame>
 
             {
-                betError ? <span style={{color: "red"}}>※掛け金は0～999,999の範囲にしてください。</span> : ""
+                betError ? <span style={{color: "red"}}>
+                                ※掛け金は1～{cash}Gilの範囲にしてください。
+                           </span> : ""
             }
         </>
     );

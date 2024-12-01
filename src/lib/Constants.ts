@@ -64,9 +64,12 @@ const DOMAIN = {
     XSERVER_API: `https://kazapp-trial.com`,
 }
 // ドメインを決定 // デプロイ前に確認
-// const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
-const ENVIRONMENT = DOMAIN.XSERVER_API;
+const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
+// const ENVIRONMENT = DOMAIN.XSERVER_API;
 export const URL = {
+    USER_INFO: `${ENVIRONMENT}/api/user/userInfo`,
+
+    SELECT_LOGIN_USER: `${ENVIRONMENT}/api/user/loginUser`,
     INIT_MONSTERS: `${ENVIRONMENT}/api/battle/init`,
     BET_RATE: `${ENVIRONMENT}/api/battle/betRate`,
     BATTLE_NEXT_TURN: `${ENVIRONMENT}/api/battle/nextTurn`,
@@ -79,12 +82,11 @@ export const URL = {
     REGIST_USER: `${ENVIRONMENT}/api/user/userRegist`,
     LOGIN_USER: `${ENVIRONMENT}/api/login`,
     CHECK_LOGIN_TOKEN: `${ENVIRONMENT}/api/checkToken`,
-    SELECT_LOGIN_USER: `${ENVIRONMENT}/api/user/loginUser`
 } as const;
 
 export const KEYS = {
     TOKEN: "token",
-    USER_NAME: "userName",
+    USER_ID: "userId",
     ORDER_BY_ASC: "ASC",
     ORDER_BY_DESC: "DESC"
 } as const;

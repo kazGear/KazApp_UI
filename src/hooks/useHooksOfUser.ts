@@ -27,19 +27,19 @@ export const useLogin = () => {
             // トークン有 >>> ログイン成功
             if (token != null) {
                 localStorage.setItem(KEYS.TOKEN, token);
-                localStorage.setItem(KEYS.USER_NAME, inputLoginId);
+                localStorage.setItem(KEYS.USER_ID, inputLoginId);
                 setToken(token);
                 setShowAlert(false);
                 window.location.href = "/IndexPage";
             } else if (isEmpty(token)) {
                 localStorage.removeItem(KEYS.TOKEN);
-                localStorage.removeItem(KEYS.USER_NAME);
+                localStorage.removeItem(KEYS.USER_ID);
                 setShowAlert(true);
                 setTimeout(() => window.location.href = "/LoginPage", 2000);
             }
         } catch (err) {
             localStorage.removeItem(KEYS.TOKEN);
-            localStorage.removeItem(KEYS.USER_NAME);
+            localStorage.removeItem(KEYS.USER_ID);
             setShowAlert(true);
             setTimeout(() => window.location.href = "/LoginPage", 2000);
         }

@@ -82,11 +82,11 @@ const UserRegistContents = ({setShowRegistForm}: ArgProps) => {
                                           &Password=${inputPassword}
                                           &DispName=${inputDispName}
                                           &DispShortName=${inputDispShortName}`);
-            localStorage.setItem(KEYS.USER_NAME, inputLoginId);
+            localStorage.setItem(KEYS.USER_ID, inputLoginId);
             setRegistResult("正常に登録されました。");
             setCanRegist(true);
         } catch (err) {
-            localStorage.removeItem(KEYS.USER_NAME);
+            localStorage.removeItem(KEYS.USER_ID);
             setRegistResult("登録に失敗しました。");
         }
     };

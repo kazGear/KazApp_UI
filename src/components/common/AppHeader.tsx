@@ -42,7 +42,7 @@ const AppHeader = ({title}: ArgProps) => {
 
     // ユーザー名取得のため
     useLayoutEffect(() => {
-        const id: string | null = localStorage.getItem(KEYS.USER_NAME);
+        const id: string | null = localStorage.getItem(KEYS.USER_ID);
         setLoginId(id);
     }, [loginId]);
 
