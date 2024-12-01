@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MenuTitle from "../components/common/MenuTitle";
-import { useLayoutEffect, useState } from "react";
-import { COLORS, KEYS, URL } from "../lib/Constants";
+import { useState } from "react";
+import { COLORS } from "../lib/Constants";
 import { useCheckLogin } from "../hooks/useHooksOfIndex";
 
 const Slink = styled(Link)`
@@ -20,6 +20,10 @@ const SpDescription = styled.p`
 const fontColor = COLORS.MAIN_FONT_COLOR;
 const backColor = "darkgray"
 const classOfAnime: string = "noneAnimation";
+const titleStyle: {} = {
+    color: fontColor,
+    background: backColor,
+}
 
 const IndexPage = () => {
     const [validToken, setValidToken] = useState(false);
@@ -44,7 +48,7 @@ const IndexPage = () => {
                 <Slink to={validToken ? "/BattlePage" : "/"} >
                     <MenuTitle title={"モンスタ－闘技場"}
                                className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : {color: fontColor, background: backColor}}/>
+                               styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     某RPGカジノ風のモンスター闘技場です。どのモンスターが勝ち残るか当ててみてください。<br/>
@@ -54,7 +58,7 @@ const IndexPage = () => {
                 <Slink to={validToken ? "/BattleResultPage": "/"}>
                     <MenuTitle title={"闘技場戦績"}
                                className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : {color: fontColor, background: backColor}}/>
+                               styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     モンスター達がこれまで戦ってきた戦績を残してありますので<br/>
@@ -64,7 +68,7 @@ const IndexPage = () => {
                 <Slink to={validToken ? "/UserPage" : ""} >
                     <MenuTitle title={"ユーザーページ"}
                                className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : {color: fontColor, background: backColor}}/>
+                               styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     ユーザーの所持金、所持物などのユーザー情報を確認できます。<br/>
@@ -74,7 +78,7 @@ const IndexPage = () => {
                 <Slink to={validToken ? "/" : ""} >
                     <MenuTitle title={"各種設定（ 工事中 ）"}
                                className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : {color: fontColor, background: backColor}}/>
+                               styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     制作予定・・・ モンスターデータ編集、モンスター所持スキル編集、スキル編集、ユーザー編集・・・
@@ -83,7 +87,7 @@ const IndexPage = () => {
                 <Slink to={validToken ? "/" : ""} >
                     <MenuTitle title={"ショップ（ 工事中 ）"}
                                className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : {color: fontColor, background: backColor}}/>
+                               styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     制作予定・・・ モンスターセット、スキルセットの開放、アイテム ...

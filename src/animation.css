@@ -2,7 +2,8 @@
 アニメ－ションなし
 */
 .noneAnimation {
-  background-color: #0aff84;
+  /* background-color: #0aff84; */
+  background: linear-gradient(to bottom right, #0aff84, #ceffc6);
   box-shadow: darkgrey 28px 10px;
 }
 
