@@ -33,7 +33,7 @@ interface ArgProps {
     shortLog: MetaDataDTO[];
 }
 
-const MonsterImg = ({monster, shortLog}: ArgProps) => {
+const MonsterImgBlock = ({monster, shortLog}: ArgProps) => {
     const imgRef = useRef<HTMLImageElement>(null);
     const [effectImage, setEffectImage] = useState("");
     const [showEffect, setShowEffect] = useState(false);
@@ -75,4 +75,4 @@ const MonsterImg = ({monster, shortLog}: ArgProps) => {
     );
 }
 
-export default MonsterImg;
+export default MonsterImgBlock;

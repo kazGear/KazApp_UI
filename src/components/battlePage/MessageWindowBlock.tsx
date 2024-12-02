@@ -14,7 +14,7 @@ const SdivMessageWindow = styled.div`
 
 interface ArgProps { shortLog: MetaDataDTO[]; }
 
-const MessageWindow = ({shortLog}: ArgProps) => {
+const MessageWindowBlock = ({shortLog}: ArgProps) => {
     return (
         <>
             <SdivMessageWindowFrame id="messageWindow">
@@ -34,4 +34,4 @@ const MessageWindow = ({shortLog}: ArgProps) => {
     );
 }
 
-export default MessageWindow;
+export default MessageWindowBlock;

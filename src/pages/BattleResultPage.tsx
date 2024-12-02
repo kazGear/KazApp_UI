@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { BattleReportDTO, MonsterReportDTO } from "../types/BattleReport";
-import MonsterReport from "../components/BattleResultPage/MonsterReport";
-import BattleReport from "../components/BattleResultPage/BattleReport";
+import MonsterReport from "../components/battleResultPage/MonsterReportBlock";
 import { useCheckToken } from "../hooks/useHooksOfCommon";
-import BattleReportController from "../components/BattleResultPage/BattleReportController";
-import MonsterReportController from "../components/BattleResultPage/MonsterReportController";
+import BattleReportControllerBlock from "../components/battleResultPage/BattleReportControllerBlock";
+import BattleReportBlock from "../components/battleResultPage/BattleReportBlock";
+import MonsterReportControllerBlock from "../components/battleResultPage/MonsterReportControllerBlock";
 
 const SdivOutsideFrame = styled.div`
     margin-top: 10px;
@@ -54,12 +54,12 @@ const BattleResultPage = () => {
             <SdivOptionFrame>
                 {/* 検索条件部 */}
                 <SdivOptionL>
-                    <BattleReportController setMonsterReport={setMonsterReport}
+                    <BattleReportControllerBlock setMonsterReport={setMonsterReport}
                                             sortType={sortType}/>
                 </SdivOptionL>
                 {/* 検索条件部 */}
                 <SdivOptionR>
-                    <MonsterReportController setBattleReport={setBattleReport}/>
+                    <MonsterReportControllerBlock setBattleReport={setBattleReport}/>
                 </SdivOptionR>
             </SdivOptionFrame>
 
@@ -71,7 +71,7 @@ const BattleResultPage = () => {
                  </SdivReportL>
                 {/* レポート部 */}
                 <SdivReportR>
-                    <BattleReport battleReport={battleReport} />
+                    <BattleReportBlock battleReport={battleReport} />
                 </SdivReportR>
             </SdivReportFrame>
         </SdivOutsideFrame>

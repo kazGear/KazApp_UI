@@ -2,10 +2,10 @@ import { ChangeEvent, useCallback, useState } from "react";
 import { COLORS, URL } from "../../lib/Constants";
 import Button from "../common/Button";
 import FromToDate from "../common/FromTo";
-import BattleScaleList from "./BattleScaleList";
 import { BattleReportDTO } from "../../types/BattleReport";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import styled from "styled-components";
+import BattleScaleListBlock from "./BattleScaleListBlock";
 
 const Sh1Title = styled.h1`
     font-size: 16px;
@@ -17,7 +17,7 @@ interface ArgProps {
     setBattleReport: React.Dispatch<React.SetStateAction<BattleReportDTO[]>>;
 }
 
-const MonsterReportController = ({setBattleReport}: ArgProps) => {
+const MonsterReportControllerBlock = ({setBattleReport}: ArgProps) => {
     // 送信パラメータ系
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
@@ -48,7 +48,7 @@ const MonsterReportController = ({setBattleReport}: ArgProps) => {
     return (
         <div>
             <Sh1Title>戦闘結果</Sh1Title>
-            <BattleScaleList
+            <BattleScaleListBlock
                 changeBattleScaleHandler={changeBattleScaleHandler}
             />
             <FromToDate
@@ -73,4 +73,4 @@ const MonsterReportController = ({setBattleReport}: ArgProps) => {
     );
 }
 
-export default MonsterReportController;
+export default MonsterReportControllerBlock;

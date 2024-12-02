@@ -44,7 +44,7 @@ interface ArgProps {
     battleReport: BattleReportDTO[];
 }
 
-const BattleReport = ({battleReport}: ArgProps) => {
+const BattleReportBlock = ({battleReport}: ArgProps) => {
 
     return (
         <Stable>
@@ -80,4 +80,4 @@ const BattleReport = ({battleReport}: ArgProps) => {
     );
 }
 
-export default BattleReport;
+export default BattleReportBlock;

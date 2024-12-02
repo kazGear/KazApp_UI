@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { COLORS, KEYS, URL } from "../../lib/Constants";
-import MonsterTypesList from "./MonsterTypesList";
 import Select from "../common/Select";
 import Button from "../common/Button";
 import { useCallback, useState } from "react";
 import { MonsterReportDTO } from "../../types/BattleReport";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
+import MonsterTypesListBlock from "./MonsterTypesListBlock";
 
 const Sh1Title = styled.h1`
     font-size: 16px;
@@ -18,7 +18,7 @@ interface ArgProps {
     sortType: string;
 }
 
-const BattleReportController = ({setMonsterReport, sortType}: ArgProps) => {
+const BattleReportControllerBlock = ({setMonsterReport, sortType}: ArgProps) => {
     const [monsterTypeId, setMonsterTypeId] = useState("0");
     const [isAscOrder, setIsAscOrder] = useState(true);
 
@@ -50,7 +50,7 @@ const BattleReportController = ({setMonsterReport, sortType}: ArgProps) => {
     return (
         <div>
             <Sh1Title>モンスター戦績</Sh1Title>
-            <MonsterTypesList setMonsterTypeId={setMonsterTypeId} />
+            <MonsterTypesListBlock setMonsterTypeId={setMonsterTypeId} />
             <Select title="ソート順" onChange={sortHandler}>
                 <option value={KEYS.ORDER_BY_ASC}>昇順</option>
                 <option value={KEYS.ORDER_BY_DESC}>降順</option>
@@ -68,4 +68,4 @@ const BattleReportController = ({setMonsterReport, sortType}: ArgProps) => {
     );
 };
 
-export default BattleReportController;
+export default BattleReportControllerBlock;

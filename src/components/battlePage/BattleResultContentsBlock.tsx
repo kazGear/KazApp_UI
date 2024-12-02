@@ -36,7 +36,7 @@ interface ArgProps {
     betGil: number;
 }
 
-const BattleResultContents = (
+const BattleResultContentsBlock = (
      {log, betMonster, betGil}: ArgProps
     ) => {
     const strike = log && betMonster &&
@@ -100,4 +100,4 @@ const BattleResultContents = (
         </>
     );
 };
-export default BattleResultContents;
+export default BattleResultContentsBlock;

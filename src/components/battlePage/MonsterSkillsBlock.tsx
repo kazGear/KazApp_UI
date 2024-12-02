@@ -19,7 +19,7 @@ interface ArgProps {
     monster: MonsterDTO;
  }
 
-const MonsterSkills = ({monster}: ArgProps) => {
+const MonsterSkillsBlock = ({monster}: ArgProps) => {
     return (
         <SdivMonsterSkillsFrame>
             <Sol>
@@ -37,4 +37,4 @@ const MonsterSkills = ({monster}: ArgProps) => {
     );
 }
 
-export default MonsterSkills;
+export default MonsterSkillsBlock;

@@ -20,7 +20,7 @@ interface ArgProps {
     battleStarted: boolean;
 }
 
-const CommandButtons = ({
+const CommandButtonBlock = ({
     battleStartHandler,
     nextTurnHandler,
     monsterCount,
@@ -68,4 +68,4 @@ const CommandButtons = ({
     );
 }
 
-export default CommandButtons;
+export default CommandButtonBlock;

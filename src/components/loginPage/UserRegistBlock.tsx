@@ -4,7 +4,7 @@ import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { COLORS, KEYS, URL } from "../../lib/Constants";
 import { UserDTO } from "../../types/UserManage";
 import { useCreateUsedList } from "../../hooks/useHooksOfUser";
-import InputUserContents from "../userRegist/InputUserContents";
+import InputUserContents from "../userRegist/InputUserBlock";
 import styled from "styled-components";
 
 const SbuttonFrame = styled.div`
@@ -18,7 +18,7 @@ interface ArgProps {
     setShowRegistForm: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const UserRegistContents = ({setShowRegistForm}: ArgProps) => {
+const UserRegistBlock = ({setShowRegistForm}: ArgProps) => {
     // ユーザ関連情報
     const [users, setUserList] = useState<UserDTO[] | null>(null);
     const [usedLoginIdList, setUsedLoginIdList] = useState<string[] | null>(null);
@@ -158,4 +158,4 @@ const UserRegistContents = ({setShowRegistForm}: ArgProps) => {
         </div>
     );
 }
-export default UserRegistContents;
+export default UserRegistBlock;

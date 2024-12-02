@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
 import { MonsterDTO } from "../../types/MonsterBattle";
 import DialogFrame from "../common/DialogFrame";
-import BattleStartContents from "./BattleStartContents";
-import BetContents from "./BetContents";
+import GameBetContentsBlock from "./GameBetBlock";
 
 interface ArgProps {
     monsters: MonsterDTO[];
@@ -12,12 +11,12 @@ interface ArgProps {
     setShowBetDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DialogGameBet = ({
+const GameBetBlock = ({
     monsters, setBetMonster, setBetGil, showBetDialog, setShowBetDialog
  }: ArgProps) => {
 
     const contents = (): ReactNode => {
-        return <BetContents
+        return <GameBetContentsBlock
                     monsters={monsters}
                     setBetMonster={setBetMonster}
                     setBetGil={setBetGil}
@@ -32,4 +31,4 @@ const DialogGameBet = ({
     );
 }
 
-export default DialogGameBet;
+export default GameBetBlock;

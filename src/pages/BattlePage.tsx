@@ -1,19 +1,18 @@
 import styled from "styled-components";
 import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useCheckToken } from "../hooks/useHooksOfCommon";
 import { useServerWithQuery } from "../hooks/useHooksOfCommon";
 import { KEYS, URL } from "../lib/Constants";
 import { useServerWithJson } from "../hooks/useHooksOfCommon";
 import { useRegistResult } from "../hooks/useHooksOfBattle";
 import { isEmpty } from "../lib/CommonLogic";
-import MonsterWindow from "../components/battlePage/MonsterWindow";
-import CommandButtons from "../components/battlePage/CommandButtons";
-import MessageWindow from "../components/battlePage/MessageWindow";
-import DialogGameStart from "../components/battlePage/DialogGameStart";
-import DialogGameBet from "../components/battlePage/DialogBet";
-import DialogBattleResult from "../components/battlePage/DialogBattleResult";
-import { logDOM } from "@testing-library/react";
+import BattleResultBlock from "../components/battlePage/BattleResultBlock";
+import GameBetBlock from "../components/battlePage/BetContentsBlock";
+import GameStartBlock from "../components/battlePage/GameStartBlock";
+import MessageWindowBlock from "../components/battlePage/MessageWindowBlock";
+import CommandButtonBlock from "../components/battlePage/CommandButtonBlock";
+import MonsterWindowBlock from "../components/battlePage/MonsterWindowBlock";
 
 const SdivOutSideFrame = styled.div`
     position: relative;
@@ -149,7 +148,7 @@ const BattlePage = () => {
                 <SdivMonsterWindowFrame>
                     {
                         monsters.map((monster, index) => (
-                            <MonsterWindow
+                            <MonsterWindowBlock
                                 monster={monster}
                                 shortLog={shortLog}
                                 key={(monster.MonsterId + `_${index}`)}
@@ -158,31 +157,31 @@ const BattlePage = () => {
                     }
                 </SdivMonsterWindowFrame>
                 {/* 操作部 */}
-                <CommandButtons
+                <CommandButtonBlock
                     battleStartHandler={battleHandler}
                     nextTurnHandler={nextTurnHandler}
                     monsterCount={monsterCount}
                     battleStarted={battleStarted}
                     />
-                <MessageWindow
+                <MessageWindowBlock
                     shortLog={shortLog}
                     />
             </SdivOutSideFrame>
             {/* 開始ダイアログ */}
-            <DialogGameStart
+            <GameStartBlock
                 battleStartHandler={gameStartHandler}
                 selectMonstersCountHandler={selectMonstersCountHandler}
                 showResultDialog={showStartDialog}
                 />
             {/* 賭けダイアログ */}
-            <DialogGameBet
+            <GameBetBlock
                 monsters={monsters}
                 setBetMonster={setBetMonster}
                 setBetGil={setBetGil}
                 showBetDialog={showBetDialog}
                 setShowBetDialog={setShowBetDialog} />
             {/* 終了ダイアログ */}
-            <DialogBattleResult
+            <BattleResultBlock
                 log={resultLog}
                 betMonster={betMonster}
                 betGil={betGil}

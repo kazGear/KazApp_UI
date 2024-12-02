@@ -66,7 +66,7 @@ interface ArgProps {
     setSortType:  React.Dispatch<React.SetStateAction<string>>;
 }
 
-const MonsterReport = ({monsterReport, setSortType}: ArgProps) => {
+const MonsterReportBlock = ({monsterReport, setSortType}: ArgProps) => {
     // ソート項目
     const sortHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSortType(e.target.value);
@@ -106,4 +106,4 @@ const MonsterReport = ({monsterReport, setSortType}: ArgProps) => {
     );
 }
 
-export default MonsterReport;
+export default MonsterReportBlock;

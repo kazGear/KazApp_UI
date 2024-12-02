@@ -7,7 +7,7 @@ interface ArgProps {
     selectError: boolean;
 }
 
-const MonsterSelector = ({
+const MonsterSelectorBlock = ({
     monsters,
     rowClickHandler,
     validSelect,
@@ -52,4 +52,4 @@ const MonsterSelector = ({
     );
 }
 
-export default MonsterSelector;
+export default MonsterSelectorBlock;

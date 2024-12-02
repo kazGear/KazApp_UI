@@ -1,5 +1,5 @@
 import Input from "../common/Input";
-import { UserDTO } from "../../types/UserManage";
+
 
 interface ArgProps {
     // イベントハンドラ
@@ -19,7 +19,7 @@ interface ArgProps {
     refDispShortName: React.LegacyRef<HTMLInputElement>;
 }
 
-const InputUserContents = ({
+const InputUserBlock = ({
     inputHandlerLoginId,
     inputHandlerPassword,
     inputHandlerDispName,
@@ -80,4 +80,4 @@ const InputUserContents = ({
     );
 }
 
-export default InputUserContents;
+export default InputUserBlock;

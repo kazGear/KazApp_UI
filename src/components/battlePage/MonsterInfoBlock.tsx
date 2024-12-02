@@ -21,7 +21,7 @@ interface ArgProps {
     shortLog: MetaDataDTO[];
 }
 
-const MonsterInfo = ({monster, shortLog}: ArgProps) => {
+const MonsterInfoBlock = ({monster, shortLog}: ArgProps) => {
     const [hp, setHp] = useState(monster.Hp);
     const [status, setStatus] = useState([""]);
 
@@ -87,4 +87,4 @@ const MonsterInfo = ({monster, shortLog}: ArgProps) => {
     );
 }
 
-export default MonsterInfo;
+export default MonsterInfoBlock;

@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { COLORS, KEYS } from "../lib/Constants";
 import Button from "../components/common/Button";
 import DialogFrame from "../components/common/DialogFrame";
-import UserRegistContents from "../components/LoginPage/UserRegistContents";
 import { useCallback, useLayoutEffect, useState } from "react";
 import Input from "../components/common/Input";
 import { useLogin } from "../hooks/useHooksOfUser";
+import UserRegistBlock from "../components/loginPage/UserRegistBlock";
 
 const LoginContainer = styled.div`
     text-align: center;
@@ -49,7 +49,7 @@ const LoginPage = () => {
 
     // ユーザー登録の内容
     const renderUserRegistContents = () => {
-        return <UserRegistContents setShowRegistForm={setShowRegistForm}/>
+        return <UserRegistBlock setShowRegistForm={setShowRegistForm}/>
     }
 
     // ログイン処理

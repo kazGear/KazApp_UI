@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import DialogFrame from "../common/DialogFrame";
-import BattleStartContents from "./BattleStartContents";
+import BattleStartContentsBlock from "./BattleStartContentsBlock";
 
 interface ArgProps {
     battleStartHandler: (e: any) => Promise<void>;
@@ -8,12 +8,12 @@ interface ArgProps {
     showResultDialog : boolean
 }
 
-const DialogGameStart = ({
+const GameStartBlock = ({
     battleStartHandler, selectMonstersCountHandler, showResultDialog
  }: ArgProps) => {
 
     const contents = (): ReactNode => {
-        return <BattleStartContents
+        return <BattleStartContentsBlock
                     battleStartHandler={battleStartHandler}
                     selectMonstersCountHandler={selectMonstersCountHandler}
                     />
@@ -26,4 +26,4 @@ const DialogGameStart = ({
     );
 }
 
-export default DialogGameStart;
+export default GameStartBlock;

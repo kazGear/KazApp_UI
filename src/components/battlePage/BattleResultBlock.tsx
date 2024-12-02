@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { MetaDataDTO, MonsterDTO } from "../../types/MonsterBattle";
 import DialogFrame from "../common/DialogFrame";
-import BattleResultContents from "./BattleResultContents";
+import BattleResultContentsBlock from "./BattleResultContentsBlock";
 
 interface ArgProps {
     log:  MetaDataDTO | null;
@@ -10,12 +10,12 @@ interface ArgProps {
     showResultDialog: boolean;
 }
 
-const DialogBattleResult = ({
+const BattleResultBlock = ({
     log, betMonster, betGil, showResultDialog
  }: ArgProps) => {
 
     const contents = (): ReactNode => {
-        return <BattleResultContents
+        return <BattleResultContentsBlock
                     log={log}
                     betMonster={betMonster}
                     betGil={betGil} />
@@ -29,4 +29,4 @@ const DialogBattleResult = ({
     );
 }
 
-export default DialogBattleResult;
+export default BattleResultBlock;

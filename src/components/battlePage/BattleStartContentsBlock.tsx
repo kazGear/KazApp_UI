@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../common/Button";
-import MonsterCountSelector from "./MonsterCountSelector";
 import { COLORS } from "../../lib/Constants";
+import MonsterCountSelectorBlock from "./MonsterCountSelectorBlock";
 
 const SdivButtonFrame = styled.div`
     height: 50%;
@@ -18,7 +18,7 @@ interface ArgProps {
     selectMonstersCountHandler: (e: any) => void;
 }
 
-const BattleStartContents = ({
+const BattleStartContentsBlock = ({
     battleStartHandler, selectMonstersCountHandler}: ArgProps
 ) => {
     return (
@@ -31,7 +31,7 @@ const BattleStartContents = ({
                 <p style={{ marginTop: 0 }}>
                     参戦モンスター数を選択してください
                 </p>
-                <MonsterCountSelector
+                <MonsterCountSelectorBlock
                     selectMonstersCountHandler={selectMonstersCountHandler}
                 />
             </div>
@@ -47,4 +47,4 @@ const BattleStartContents = ({
         </div>
     );
 }
-export default BattleStartContents;
+export default BattleStartContentsBlock;

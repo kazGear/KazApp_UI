@@ -8,7 +8,7 @@ interface ArgProps {
     setMonsterTypeId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const MonsterTypesList = ({setMonsterTypeId}: ArgProps) => {
+const MonsterTypesListBlock = ({setMonsterTypeId}: ArgProps) => {
     const [monsterTypes, setMonsterTypes] = useState<MonsterTypeDTO[]>([]);
     const fetchMonsterTypes = useServerWithQuery();
 
@@ -41,4 +41,4 @@ const MonsterTypesList = ({setMonsterTypeId}: ArgProps) => {
     );
 }
 
-export default MonsterTypesList;
+export default MonsterTypesListBlock;

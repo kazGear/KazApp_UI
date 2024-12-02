@@ -5,7 +5,7 @@ interface ArgProps {
     selectMonstersCountHandler: (e: any) => void;
 }
 
-const MonsterCountSelector = ({selectMonstersCountHandler}: ArgProps) => {
+const MonsterCountSelectorBlock = ({selectMonstersCountHandler}: ArgProps) => {
     return (
         <form method="POST" onChange={selectMonstersCountHandler}>
             <Select>
@@ -19,4 +19,4 @@ const MonsterCountSelector = ({selectMonstersCountHandler}: ArgProps) => {
     );
 }
 
-export default MonsterCountSelector;
+export default MonsterCountSelectorBlock

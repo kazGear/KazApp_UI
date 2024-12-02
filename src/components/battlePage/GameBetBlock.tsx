@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Button from "../common/Button";
 import React, { useLayoutEffect, useState } from "react";
-import MonsterSelector from "./MonsterSelector";
 import { MonsterDTO } from "../../types/MonsterBattle";
 import { COLORS, KEYS, URL } from "../../lib/Constants";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { UserDTO } from "../../types/UserManage";
-import { setConstantValue } from "typescript";
+import MonsterSelectorBlock from "./MonsterSelectorBlock";
 
 const SdivInputFrame = styled.div`
     display: flex;
@@ -24,7 +23,7 @@ interface ArgProps {
     setShowDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const BetContents = (
+const GameBetContentsBlock = (
     {monsters, setBetMonster, setBetGil, setShowDialog}: ArgProps
 ) => {
     const [user, setUser] = useState<UserDTO | null>(null);
@@ -73,7 +72,7 @@ const BetContents = (
         <>
             <Sh1>どのモンスターに賭けますか？</Sh1>
 
-            <MonsterSelector
+            <MonsterSelectorBlock
                 monsters={monsters}
                 rowClickHandler={rowClickHandler}
                 validSelect={validSelect}
@@ -106,4 +105,4 @@ const BetContents = (
     );
 }
 
-export default BetContents;
+export default GameBetContentsBlock;

@@ -9,7 +9,7 @@ interface ArgProps {
     changeBattleScaleHandler: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-const BattleScaleList = ({changeBattleScaleHandler}: ArgProps) => {
+const BattleScaleListBlock = ({changeBattleScaleHandler}: ArgProps) => {
     return (
         <>
             <Select title="対戦規模" onChange={changeBattleScaleHandler}>
@@ -24,4 +24,4 @@ const BattleScaleList = ({changeBattleScaleHandler}: ArgProps) => {
     );
 };
 
-export default BattleScaleList;
+export default BattleScaleListBlock;
