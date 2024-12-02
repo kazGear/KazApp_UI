@@ -68,6 +68,7 @@ const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
 // const ENVIRONMENT = DOMAIN.XSERVER_API;
 export const URL = {
     USER_INFO: `${ENVIRONMENT}/api/user/userInfo`,
+    MONSTERS_INFO: `${ENVIRONMENT}/api/battle/monstersInfo`,
 
     SELECT_LOGIN_USER: `${ENVIRONMENT}/api/user/loginUser`,
     INIT_MONSTERS: `${ENVIRONMENT}/api/battle/init`,

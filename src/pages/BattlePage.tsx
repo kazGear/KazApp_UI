@@ -80,11 +80,11 @@ const BattlePage = () => {
     }, []);
 
     // モンスタ－初期化
-    const fecthMonsters = useServerWithQuery();
     /**
      * ゲーム開始、モンスター用意
-     */
-    const gameStartHandler = useCallback(async (e: any) => {
+    */
+   const fecthMonsters = useServerWithQuery();
+   const gameStartHandler = useCallback(async (e: any) => {
         const initMonsters = await fecthMonsters(
             `${URL.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${loginId}`);
         setMonsters(initMonsters);
@@ -94,11 +94,10 @@ const BattlePage = () => {
         setShowBetDialog(true);
         setShowBattleView(true);
     }, [loginId])
-
-    const moveMonsters = useServerWithJson();
     /**
      *  全モンスターが行動。戦闘ログを取得
-     */
+    */
+    const moveMonsters = useServerWithJson();
     const battleHandler = async () => {
         const moveResult =
             await moveMonsters([...monsters], URL.BATTLE_NEXT_TURN);
