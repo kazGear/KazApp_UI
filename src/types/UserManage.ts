@@ -6,6 +6,7 @@ export interface UserDTO {
     DispName: string;
     DispShortName: string;
     Role: number;
+    RoleName: string;
     Cash: number;
     Wins: number;
     WinsGetCash: number;

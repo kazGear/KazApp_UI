@@ -3,6 +3,7 @@ import userImg from "../../images/user/ahiruguchi_man.png";
 
 const SdivImageFrame = styled.div`
     height: 150px;
+    margin: 20px;
 `;
 const Simg = styled.img`
     widht: 150px;

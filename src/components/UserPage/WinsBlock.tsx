@@ -3,7 +3,8 @@ import { UserDTO } from "../../types/UserManage";
 import Strong from "../common/Strong";
 
 const SdivWinFrame = styled.div`
-    height: 100px;
+    height: 50%;
+    margin: 25px;
 `;
 
 interface ArgProps {

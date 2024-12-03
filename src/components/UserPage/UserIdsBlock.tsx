@@ -14,7 +14,7 @@ const UserIdsBlock = ({user}: ArgProps) => {
     return (
         <SdivIDFrame>
             <p><Strong>ログインID</Strong> : {user != null ? user.LoginId : ""}</p>
-            <p><Strong>ロール</Strong> : {user != null ? user.Role : ""}</p>
+            <p><Strong>ロール</Strong> : {user != null ? user.RoleName : ""}</p>
         </SdivIDFrame>
     );
 }

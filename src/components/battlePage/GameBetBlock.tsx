@@ -7,6 +7,7 @@ import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { UserDTO } from "../../types/UserManage";
 import MonsterSelectorBlock from "./MonsterSelectorBlock";
 
+
 const SdivInputFrame = styled.div`
     display: flex;
     justify-content: space-between;

@@ -3,7 +3,8 @@ import { UserDTO } from "../../types/UserManage";
 import Strong from "../common/Strong";
 
 const SdivLose = styled.div`
-    height: 100px;
+    height: 50%;
+    margin: 25px;
 `;
 
 interface ArgProps {

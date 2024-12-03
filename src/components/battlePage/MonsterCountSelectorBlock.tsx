@@ -19,4 +19,4 @@ const MonsterCountSelectorBlock = ({selectMonstersCountHandler}: ArgProps) => {
     );
 }
 
-export default MonsterCountSelectorBlock
+export default MonsterCountSelectorBlock;

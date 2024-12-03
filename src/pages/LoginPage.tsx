@@ -6,28 +6,25 @@ import { useCallback, useLayoutEffect, useState } from "react";
 import Input from "../components/common/Input";
 import { useLogin } from "../hooks/useHooksOfUser";
 import UserRegistBlock from "../components/loginPage/UserRegistBlock";
+import OutSideFrame from "../components/common/OutSideFrame";
 
 const LoginContainer = styled.div`
     text-align: center;
     display: flex;
 `;
 
-const LoginForm = styled.form`
-    width: 50%;
-    min-width: 300px;
-    height:200px;
-    margin: auto;
-    align-content: center;
-    text-align: center;
-    border: solid 1px ${COLORS.BORDER_COLOR};
-    box-shadow: 2px 2px ${COLORS.SHADOW_COLOR};
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-`;
+const frameStyle: React.CSSProperties = {
+    width: "50%",
+    minWidth: "300px",
+    height: "200px",
+    margin: "auto",
+    alignContent: "center",
+    textAlign: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+};
 
 const Sspan = styled.span`
     color: ${COLORS.ALERT_MESSAGE_COLOR};
@@ -61,32 +58,34 @@ const LoginPage = () => {
     return (
         <>
             <LoginContainer>
-                <LoginForm action="" method="post">
-                    <Input labelTitle="ログインID"
-                           inputType="text"
-                           id="loginId"
-                           name="loginId"
-                           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputLoginId(e.target.value)}
-                           />
-                    <Input labelTitle="パスワード"
-                           inputType="password"
-                           id="password"
-                           name="password"
-                           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)}
-                           />
-                    {
-                        showAlert ? <Sspan>ID又はパスワードに誤りがあります。</Sspan> : ""
-                    }
-                    <br />
-                    <div>
-                        <Button text="ログイン" onClick={loginHandler}/>
-                        <br/>
-                        <Button text="ユーザー登録がお済でない方"
-                        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setShowRegistForm(!showRegistForm)}
-                        styleObj={{width: "220px", marginTop: "15px"}}
-                        />
-                    </div>
-                </LoginForm>
+                <OutSideFrame styleObj={frameStyle} >
+                    <form action="" method="post">
+                        <Input labelTitle="ログインID"
+                            inputType="text"
+                            id="loginId"
+                            name="loginId"
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputLoginId(e.target.value)}
+                            />
+                        <Input labelTitle="パスワード"
+                            inputType="password"
+                            id="password"
+                            name="password"
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)}
+                            />
+                        {
+                            showAlert ? <Sspan>ID又はパスワードに誤りがあります。</Sspan> : ""
+                        }
+                        <br />
+                        <div>
+                            <Button text="ログイン" onClick={loginHandler}/>
+                            <br/>
+                            <Button text="ユーザー登録がお済でない方"
+                            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setShowRegistForm(!showRegistForm)}
+                            styleObj={{width: "220px", marginTop: "15px"}}
+                            />
+                        </div>
+                    </form>
+                </OutSideFrame>
             </LoginContainer>
 
             {/* ユーザ登録フォーム */}

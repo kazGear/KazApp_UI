@@ -2,9 +2,17 @@ import styled from "styled-components";
 import { UserDTO } from "../../types/UserManage";
 import Button from "../common/Button";
 import Strong from "../common/Strong";
+import { KEYS, URL } from "../../lib/Constants";
+import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 const SdivCashFrame = styled.div`
     height: 100px;
+    margin-left: 25px;
+`;
+const SspanDanger = styled.span`
+    color: red;
+    font-weight: bold;
 `;
 
 interface ArgProps {
@@ -12,20 +20,37 @@ interface ArgProps {
 }
 
 const CashBlock = ({user}: ArgProps) => {
+    const [cash, setCash] = useState<number | null>(user?.Cash ?? null);
+    const [bankruptcyCnt, setBankruptcyCnt] = useState<number | null>(user?.BankruptcyCnt ?? null);
+
+    const loginId: string | null = localStorage.getItem(KEYS.USER_ID);
+    /**
+     * 値更新
+     */
+    useLayoutEffect(() => {
+        setCash(user?.Cash ?? null);
+        setBankruptcyCnt(user?.BankruptcyCnt ?? null);
+    }, [user]);
+    /**
+     * 自己破産（所持金初期化）
+     */
+    const update = useServerWithQuery();
+    const restartAsPlayer = useCallback(() => {
+        const restart = async () => {
+            const result: UserDTO | null = await update(`${URL.RESTART_AS_PLAYER}?loginId=${loginId}`);
+            setCash(result?.Cash ?? null);
+            setBankruptcyCnt(result?.BankruptcyCnt ?? null);
+        }
+        restart();
+    }, [loginId]);
+
     return (
         <SdivCashFrame>
-            <p>
-                <Strong>所持金</Strong> : {user != null ? user!.Cash.toLocaleString() : ""} Gil
-            </p>
-            <p>
-                <Strong>自己破産</Strong>（所持金初期化）<Button text="自己破産 実行" onClick={() => {}} />
-            </p>
-            <p>
-                <Strong>自己破産回数</Strong> : {user != null ? user!.BankruptcyCnt : ""} 回
-            </p>
+            <p><Strong>所持金</Strong> : {cash != null ? cash.toLocaleString() : ""} Gil</p>
+            <p><Strong>自己破産</Strong>（所持金初期化）<Button text="自己破産 実行" onClick={restartAsPlayer} /></p>
+            <p><Strong>自己破産回数</Strong> : <SspanDanger>{bankruptcyCnt != null ? bankruptcyCnt : ""} 回</SspanDanger></p>
         </SdivCashFrame>
     );
-
 }
 
 export default CashBlock;

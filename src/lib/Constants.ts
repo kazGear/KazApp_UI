@@ -67,20 +67,25 @@ const DOMAIN = {
 const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
 // const ENVIRONMENT = DOMAIN.XSERVER_API;
 export const URL = {
+    // 基本情報取得
     USER_INFO: `${ENVIRONMENT}/api/user/userInfo`,
     MONSTERS_INFO: `${ENVIRONMENT}/api/battle/monstersInfo`,
-
+    // ユーザ関係
+    REGIST_USER_INIT: `${ENVIRONMENT}/api/user/init`,
     SELECT_LOGIN_USER: `${ENVIRONMENT}/api/user/loginUser`,
+    RECORD_USER_RESULT: `${ENVIRONMENT}/api/user/recordUserResults`,
+    REGIST_USER: `${ENVIRONMENT}/api/user/userRegist`,
+    RESTART_AS_PLAYER: `${ENVIRONMENT}/api/user/restartAsPlayer`,
+    // バトル、モンスター関係
     INIT_MONSTERS: `${ENVIRONMENT}/api/battle/init`,
     BET_RATE: `${ENVIRONMENT}/api/battle/betRate`,
     BATTLE_NEXT_TURN: `${ENVIRONMENT}/api/battle/nextTurn`,
     RECORD_BATTLE_RESULT: `${ENVIRONMENT}/api/battle/recordResults`,
-    RECORD_USER_RESULT: `${ENVIRONMENT}/api/user/recordUserResults`,
+    // レポート関係
     INIT_BATTLE_REPORT: `${ENVIRONMENT}/api/battleReport/init`,
     MONSTER_REPORTS: `${ENVIRONMENT}/api/battleReport/monsterReport`,
     BATTLE_REPORTS: `${ENVIRONMENT}/api/battleReport/battleReport`,
-    REGIST_USER_INIT: `${ENVIRONMENT}/api/user/init`,
-    REGIST_USER: `${ENVIRONMENT}/api/user/userRegist`,
+    // その他
     LOGIN_USER: `${ENVIRONMENT}/api/login`,
     CHECK_LOGIN_TOKEN: `${ENVIRONMENT}/api/checkToken`,
 } as const;

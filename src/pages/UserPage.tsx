@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { CSSProperties } from "styled-components";
 import { UserDTO } from "../types/UserManage";
 import { KEYS, URL } from "../lib/Constants";
 import { useServerWithQuery } from "../hooks/useHooksOfCommon";
@@ -9,19 +9,37 @@ import UserIconBlock from "../components/userPage/UserIconBlock";
 import WinsBlock from "../components/userPage/WinsBlock";
 import LossesBlock from "../components/userPage/LossesBlock";
 import MonstersBlock from "../components/userPage/MonstersBlock";
-import { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
+import OutSideFrame from "../components/common/OutSideFrame";
 
 const SdivPageFrame = styled.div`
     display: flex;
+    height: 100%;
 `;
 const SdivPageL = styled.div`
     width: 50%;
-    margin: 20px;
+    height: 100%;
+    min-width: 400px;
 `;
 const SdivPageR = styled.div`
     width: 50%;
-    margin: 20px;
+    height: 565px;
 `;
+
+const frameStyle: React.CSSProperties = {
+    margin: "20px",
+    height: "100%",
+    minWidth: "100px",
+}
+const iconStyle: React.CSSProperties = {
+    margin: "20px",
+    display: "flex",
+    alignItems: "center",
+}
+const winAndLoseStyle: React.CSSProperties = {
+    margin: "20px",
+    height: "100px"
+}
 
 const UserPage = () => {
     const [user, setUser] = useState<UserDTO | null>(null);
@@ -46,14 +64,24 @@ const UserPage = () => {
     return (
         <SdivPageFrame>
             <SdivPageL>
-                <UserIconBlock />
-                <UserIdsBlock user={user} />
-                <CashBlock user={user} />
+                <OutSideFrame styleObj={iconStyle}>
+                    <UserIconBlock />
+                    <UserIdsBlock user={user} />
+                </OutSideFrame>
+                <OutSideFrame styleObj={frameStyle}>
+                    <CashBlock user={user} />
+                </OutSideFrame>
+                <OutSideFrame styleObj={winAndLoseStyle}>
+                    <WinsBlock user={user} />
+                </OutSideFrame>
+                <OutSideFrame styleObj={winAndLoseStyle}>
+                    <LossesBlock user={user}/>
+                </OutSideFrame>
             </SdivPageL>
             <SdivPageR>
-                <WinsBlock user={user} />
-                <LossesBlock user={user}/>
-                <MonstersBlock monsters={monsters}/>
+                <OutSideFrame styleObj={frameStyle}>
+                    <MonstersBlock monsters={monsters}/>
+                </OutSideFrame>
             </SdivPageR>
         </SdivPageFrame>
 

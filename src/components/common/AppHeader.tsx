@@ -7,7 +7,8 @@ import { isEmpty } from "../../lib/CommonLogic";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 
 const Sheader = styled.header`
-    height: 50px;
+    height: 5%;
+    max-height: 50px;
     box-shadow: 0px 0px 10px 0px #000000;
     text-align: left;
     display: flex;

@@ -7,6 +7,7 @@ import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import styled from "styled-components";
 import BattleScaleListBlock from "./BattleScaleListBlock";
 
+
 const Sh1Title = styled.h1`
     font-size: 16px;
     color: ${COLORS.CAPTION_FONT_COLOR};

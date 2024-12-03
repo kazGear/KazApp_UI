@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import DialogFrame from "../common/DialogFrame";
 import BattleStartContentsBlock from "./BattleStartContentsBlock";
 
+
 interface ArgProps {
     battleStartHandler: (e: any) => Promise<void>;
     selectMonstersCountHandler: (e: any) => void;

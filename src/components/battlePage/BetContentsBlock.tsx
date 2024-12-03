@@ -3,6 +3,7 @@ import { MonsterDTO } from "../../types/MonsterBattle";
 import DialogFrame from "../common/DialogFrame";
 import GameBetContentsBlock from "./GameBetBlock";
 
+
 interface ArgProps {
     monsters: MonsterDTO[];
     setBetMonster: React.Dispatch<React.SetStateAction<MonsterDTO | null>>;
