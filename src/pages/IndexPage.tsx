@@ -28,7 +28,6 @@ const titleStyle: {} = {
 const IndexPage = () => {
     const [validToken, setValidToken] = useState(false);
 
-    // 初期処理
     useCheckLogin(setValidToken);
 
     return (

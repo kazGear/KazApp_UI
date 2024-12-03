@@ -85,9 +85,9 @@ export const URL = {
     INIT_BATTLE_REPORT: `${ENVIRONMENT}/api/battleReport/init`,
     MONSTER_REPORTS: `${ENVIRONMENT}/api/battleReport/monsterReport`,
     BATTLE_REPORTS: `${ENVIRONMENT}/api/battleReport/battleReport`,
-    // その他
-    LOGIN_USER: `${ENVIRONMENT}/api/login`,
-    CHECK_LOGIN_TOKEN: `${ENVIRONMENT}/api/checkToken`,
+    // 認証系
+    LOGIN_USER: `${ENVIRONMENT}/api/auth/login`,
+    CHECK_LOGIN_TOKEN: `${ENVIRONMENT}/api/auth/checkToken`,
 } as const;
 
 export const KEYS = {

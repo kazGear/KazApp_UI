@@ -5,6 +5,7 @@ import { COLORS, KEYS, URL } from "../../lib/Constants";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { isEmpty } from "../../lib/CommonLogic";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
+import { useCheckLogin } from "../../hooks/useHooksOfIndex";
 
 const Sheader = styled.header`
     height: 5%;
@@ -35,11 +36,14 @@ interface ArgProps { title: string; }
 const AppHeader = ({title}: ArgProps) => {
     const [loginId, setLoginId] = useState<string | null>("");
     const [dispName, setDispName] = useState<string | null>("");
+    const [validToken, setValidToken] = useState(false);
 
     const navigate = useNavigate();
     const currentUrl: string = window.location.href;
     const isRootPage: boolean = currentUrl.endsWith("/"); // 最初のページ
     const isRootPage2: boolean = currentUrl.endsWith("/IndexPage");
+
+    useCheckLogin(setValidToken);
 
     // ユーザー名取得のため
     useLayoutEffect(() => {
@@ -65,16 +69,20 @@ const AppHeader = ({title}: ArgProps) => {
                 }}>
                 <Button text="モンスター闘技場"
                         width={125}
-                        onClick={() => navigate("/BattlePage")}/>
+                        onClick={() => navigate("/BattlePage")}
+                        disabled={validToken ? false : true}/>
                 <Button text="闘技場戦績"
                         width={90}
-                        onClick={() => navigate("/BattleResultPage")}/>
+                        onClick={() => navigate("/BattleResultPage")}
+                        disabled={validToken ? false : true}/>
                 <Button text="ユーザーページ"
                         width={120}
-                        onClick={() => navigate("/UserPage")}/>
+                        onClick={() => navigate("/UserPage")}
+                        disabled={validToken ? false : true}/>
                 <Button text="工事中"
                         width={60}
-                        onClick={() => {}}/>
+                        onClick={() => {}}
+                        disabled={validToken ? false : true}/>
             </SdivButtonFrame>
             <div style={{display: "flex"}}>
                 {
