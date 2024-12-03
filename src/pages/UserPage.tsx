@@ -1,7 +1,7 @@
-import styled, { CSSProperties } from "styled-components";
+import styled from "styled-components";
 import { UserDTO } from "../types/UserManage";
 import { KEYS, URL } from "../lib/Constants";
-import { useServerWithQuery } from "../hooks/useHooksOfCommon";
+import { useCheckToken, useServerWithQuery } from "../hooks/useHooksOfCommon";
 import { MonsterDTO } from "../types/MonsterBattle";
 import CashBlock from "../components/userPage/CashBlock";
 import UserIdsBlock from "../components/userPage/UserIdsBlock";
@@ -46,6 +46,8 @@ const UserPage = () => {
     const [monsters, setMonsters] = useState<MonsterDTO[]>([]);
 
     const loginId = localStorage.getItem(KEYS.USER_ID);
+
+    useCheckToken();
 
     /**
      * ユーザ情報取得

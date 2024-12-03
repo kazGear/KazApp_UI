@@ -4,7 +4,7 @@ import Button from "../common/Button";
 import Strong from "../common/Strong";
 import { KEYS, URL } from "../../lib/Constants";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 const SdivCashFrame = styled.div`
     height: 100px;
