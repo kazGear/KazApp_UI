@@ -2,21 +2,23 @@ import React, { forwardRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { COLORS, SIZE } from "../../lib/Constants";
 
+
+const Sinput = styled.input`
+    height: ${SIZE.INPUT_HEIGHT};
+    padding: 0;
+    border: ${COLORS.BORDER_COLOR} 1px solid;
+`;
 const Sspan = styled.span`
     display: inline;
     font-size: 9px;
     margin-left: 10px;
     color: ${COLORS.ALERT_MESSAGE_COLOR};
 `;
-const Sinput = styled.input`
-    height: ${SIZE.INPUT_HEIGHT};
-    padding: 0;
-    border: ${COLORS.BORDER_COLOR} 1px solid;
-`;
 
 interface ArgProps {
     labelTitle: string;
     inputType: string;
+    accept?: string;
     placeholder?: string;
     id?: string
     name?: string;
@@ -32,6 +34,7 @@ interface ArgProps {
 const Input = forwardRef<HTMLInputElement, ArgProps>(({
     labelTitle,
     inputType,
+    accept,
     placeholder,
     id,
     name,
@@ -54,6 +57,7 @@ const Input = forwardRef<HTMLInputElement, ArgProps>(({
                 {labelTitle}
             </label>
             <Sinput type={inputType}
+                    accept={accept}
                     style={styleObj}
                     id={id}
                     name={name}

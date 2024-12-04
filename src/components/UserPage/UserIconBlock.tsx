@@ -1,20 +1,46 @@
 import styled from "styled-components";
-import userImg from "../../images/user/ahiruguchi_man.png";
+import { useEffect, useState } from "react";
+import { UserDTO } from "../../types/UserManage";
+import { PREFIX } from "../../lib/Constants";
+import nowLoading from "../../images/background/nowLoading.gif";
+import { isEmpty } from "../../lib/CommonLogic";
 
 const SdivImageFrame = styled.div`
     height: 150px;
-    margin: 20px;
+    min-width: 120px;
+    margin: 20px 0px 20px 0px;
+    align-content: center;
 `;
 const Simg = styled.img`
-    widht: 150px;
-    height: 150px;
+    widht: 120px;
+    height: 120px;
     border-radius: 100%;
 `;
 
-const UserIconBlock = () => {
+interface ArgProps {
+    user: UserDTO | null;
+}
+
+const UserIconBlock = ({user}: ArgProps) => {
+    const [userImage, setUserImage] = useState("");
+    /**
+     * ユーザ情報取得
+     */
+    useEffect(() => {
+        if (!isEmpty(user)) {
+            const image: string | undefined = PREFIX.BASE64 + user!.UserImage;
+            setUserImage(image);
+        }
+    }, [user, userImage]);
+
     return (
         <SdivImageFrame>
-            <Simg src={userImg} alt="イメージ"/>
+            { userImage.length < 50 ? ( // base64 prefixは30文字無い程度
+                    <Simg src={nowLoading} alt="ユーザーイメージ"/>
+                ) : (
+                    <Simg src={userImage} alt="ユーザーイメージ"/>
+                )
+            }
         </SdivImageFrame>
     );
 }

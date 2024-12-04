@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useServerWithQuery } from "./useHooksOfCommon";
-import { KEYS, URL } from "../lib/Constants";
+import { KEYS, URLS } from "../lib/Constants";
 import { isEmpty } from "../lib/CommonLogic";
 import { useLayoutEffect } from "react";
 import { UserDTO } from "../types/UserManage";
@@ -21,7 +21,7 @@ export const useLogin = () => {
         inputLoginId, inputPassword, setToken, setShowAlert
     }: ArgPropsLogin) => {
         try {
-            const token: string = await exeLogin(`${URL.LOGIN_USER}?loginId=${inputLoginId}
+            const token: string = await exeLogin(`${URLS.LOGIN_USER}?loginId=${inputLoginId}
                                                                    &password=${inputPassword}`);
 
             // トークン有 >>> ログイン成功

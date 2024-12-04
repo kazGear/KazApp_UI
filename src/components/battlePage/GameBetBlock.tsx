@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import React, { useLayoutEffect, useState } from "react";
 import { MonsterDTO } from "../../types/MonsterBattle";
-import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { COLORS, KEYS, URLS } from "../../lib/Constants";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { UserDTO } from "../../types/UserManage";
 import MonsterSelectorBlock from "./MonsterSelectorBlock";
@@ -40,7 +40,7 @@ const GameBetContentsBlock = (
     const select = useServerWithQuery();
     useLayoutEffect(() => {
         const selectUser = async () => {
-            const user: UserDTO = await select(`${URL.USER_INFO}?loginId=${localStorage.getItem(KEYS.USER_ID)}`);
+            const user: UserDTO = await select(`${URLS.USER_INFO}?loginId=${localStorage.getItem(KEYS.USER_ID)}`);
             setUser(user);
             setCash(user.Cash.toLocaleString());
             setCashLimit(user.Cash);

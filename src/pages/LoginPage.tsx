@@ -38,18 +38,22 @@ const LoginPage = () => {
     const [token, setToken] = useState<string | null>(null);
     const [showAlert, setShowAlert] = useState(false);
 
-    // 初期処理
+    /**
+     * 初期処理
+     */
     useLayoutEffect(() => {
         const token = localStorage.getItem(KEYS.TOKEN);
         if (token) setToken(token);
     }, []);
-
-    // ユーザー登録の内容
+    /**
+     * ユーザー登録の内容
+     */
     const renderUserRegistContents = () => {
         return <UserRegistBlock setShowRegistForm={setShowRegistForm}/>
     }
-
-    // ログイン処理
+    /**
+     * ログイン処理
+     */
     const login = useLogin();
     const loginHandler = useCallback(() => {
         login({inputLoginId, inputPassword, setToken, setShowAlert});
@@ -60,28 +64,30 @@ const LoginPage = () => {
             <LoginContainer>
                 <OutSideFrame styleObj={frameStyle} >
                     <form action="" method="post">
-                        <Input labelTitle="ログインID"
+                        <Input
+                            labelTitle="ログインID"
                             inputType="text"
                             id="loginId"
                             name="loginId"
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputLoginId(e.target.value)}
                             />
-                        <Input labelTitle="パスワード"
+                        <Input
+                            labelTitle="パスワード"
                             inputType="password"
                             id="password"
                             name="password"
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)}
                             />
                         {
-                            showAlert ? <Sspan>ID又はパスワードに誤りがあります。</Sspan> : ""
+                            showAlert ? <Sspan>入力に誤りがあるか、無効なユーザーです。。</Sspan> : ""
                         }
                         <br />
                         <div>
                             <Button text="ログイン" onClick={loginHandler}/>
                             <br/>
                             <Button text="ユーザー登録がお済でない方"
-                            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setShowRegistForm(!showRegistForm)}
-                            styleObj={{width: "220px", marginTop: "15px"}}
+                                    onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setShowRegistForm(!showRegistForm)}
+                                    styleObj={{width: "220px", marginTop: "15px"}}
                             />
                         </div>
                     </form>
@@ -89,8 +95,7 @@ const LoginPage = () => {
             </LoginContainer>
 
             {/* ユーザ登録フォーム */}
-            <DialogFrame renderChild={renderUserRegistContents}
-                         showDialog={showRegistForm}/>
+            <DialogFrame renderChild={renderUserRegistContents} showDialog={showRegistForm}/>
          </>
     );
 };

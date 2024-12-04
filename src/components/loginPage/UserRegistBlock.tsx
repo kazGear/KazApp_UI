@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Button from "../common/Button";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
-import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { COLORS, KEYS, URLS } from "../../lib/Constants";
 import { UserDTO } from "../../types/UserManage";
 import { useCreateUsedList } from "../../hooks/useHooksOfUser";
 import InputUserContents from "../userRegist/InputUserBlock";
@@ -47,7 +47,7 @@ const UserRegistBlock = ({setShowRegistForm}: ArgProps) => {
     const fetchUsersData = useServerWithQuery();
     useLayoutEffect(() => {
         const fetchUsers = async () => {
-            const usersFromDb: UserDTO[] = await fetchUsersData(`${URL.REGIST_USER_INIT}`);
+            const usersFromDb: UserDTO[] = await fetchUsersData(`${URLS.REGIST_USER_INIT}`);
             setUserList(usersFromDb);
         };
         fetchUsers();
@@ -78,7 +78,7 @@ const UserRegistBlock = ({setShowRegistForm}: ArgProps) => {
     const insertUser = useServerWithQuery();
     const exeUserInsert = () => {
         try {
-            insertUser(`${URL.REGIST_USER}?LoginId=${inputLoginId}
+            insertUser(`${URLS.REGIST_USER}?LoginId=${inputLoginId}
                                           &Password=${inputPassword}
                                           &DispName=${inputDispName}
                                           &DispShortName=${inputDispShortName}`);

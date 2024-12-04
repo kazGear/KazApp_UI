@@ -66,7 +66,7 @@ const DOMAIN = {
 // ドメインを決定 // デプロイ前に確認
 const ENVIRONMENT = DOMAIN.LOCAL_HOST_API;
 // const ENVIRONMENT = DOMAIN.XSERVER_API;
-export const URL = {
+export const URLS = {
     // 基本情報取得
     USER_INFO: `${ENVIRONMENT}/api/user/userInfo`,
     MONSTERS_INFO: `${ENVIRONMENT}/api/battle/monstersInfo`,
@@ -88,6 +88,8 @@ export const URL = {
     // 認証系
     LOGIN_USER: `${ENVIRONMENT}/api/auth/login`,
     CHECK_LOGIN_TOKEN: `${ENVIRONMENT}/api/auth/checkToken`,
+    // その他
+    UPLOAD_IMAGE: `${ENVIRONMENT}/api/common/imgUpload`
 } as const;
 
 export const KEYS = {
@@ -95,4 +97,8 @@ export const KEYS = {
     USER_ID: "userId",
     ORDER_BY_ASC: "ASC",
     ORDER_BY_DESC: "DESC"
+} as const;
+
+export const PREFIX = {
+    BASE64: "data:image/jpeg;base64,"
 } as const;

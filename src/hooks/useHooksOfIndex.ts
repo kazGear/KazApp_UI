@@ -1,5 +1,5 @@
 import { useLayoutEffect } from "react";
-import { KEYS, URL } from "../lib/Constants";
+import { KEYS, URLS } from "../lib/Constants";
 
 export const useCheckLogin = (
     setValidToken: React.Dispatch<React.SetStateAction<boolean>>
@@ -13,7 +13,7 @@ export const useCheckLogin = (
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
             }
-            const res = await fetch(`${URL.CHECK_LOGIN_TOKEN}?token=${token}`, option);
+            const res = await fetch(`${URLS.CHECK_LOGIN_TOKEN}?token=${token}`, option);
 
             // 期限切れ
             if (res.ok) {

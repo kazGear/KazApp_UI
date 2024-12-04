@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { UserDTO } from "../types/UserManage";
-import { KEYS, URL } from "../lib/Constants";
+import { KEYS, URLS } from "../lib/Constants";
 import { useCheckToken, useServerWithQuery } from "../hooks/useHooksOfCommon";
 import { MonsterDTO } from "../types/MonsterBattle";
 import CashBlock from "../components/userPage/CashBlock";
@@ -11,6 +11,7 @@ import LossesBlock from "../components/userPage/LossesBlock";
 import MonstersBlock from "../components/userPage/MonstersBlock";
 import React, { useLayoutEffect, useState } from "react";
 import OutSideFrame from "../components/common/OutSideFrame";
+import ImgUpload from "../components/common/ImgUpload";
 
 const SdivPageFrame = styled.div`
     display: flex;
@@ -35,6 +36,7 @@ const iconStyle: React.CSSProperties = {
     margin: "20px",
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-around",
 }
 const winAndLoseStyle: React.CSSProperties = {
     margin: "20px",
@@ -55,8 +57,8 @@ const UserPage = () => {
     const select = useServerWithQuery();
     useLayoutEffect(() => {
         const selectUser = async () => {
-            const loginUser: UserDTO | null = await select(`${URL.USER_INFO}?loginId=${loginId}`);
-            const userMonsters: MonsterDTO[] = await select(`${URL.MONSTERS_INFO}?loginId=${loginId}`)
+            const loginUser: UserDTO | null = await select(`${URLS.USER_INFO}?loginId=${loginId}`);
+            const userMonsters: MonsterDTO[] = await select(`${URLS.MONSTERS_INFO}?loginId=${loginId}`)
             setUser(loginUser);
             setMonsters(userMonsters);
         }
@@ -67,8 +69,9 @@ const UserPage = () => {
         <SdivPageFrame>
             <SdivPageL>
                 <OutSideFrame styleObj={iconStyle}>
-                    <UserIconBlock />
+                    <UserIconBlock user={user}  />
                     <UserIdsBlock user={user} />
+                    <ImgUpload styleObj={{width: "110px"}} />
                 </OutSideFrame>
                 <OutSideFrame styleObj={frameStyle}>
                     <CashBlock user={user} />

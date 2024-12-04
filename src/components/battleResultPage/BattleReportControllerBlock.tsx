@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { COLORS, KEYS, URLS } from "../../lib/Constants";
 import Select from "../common/Select";
 import Button from "../common/Button";
 import { useCallback, useState } from "react";
@@ -40,7 +40,7 @@ const BattleReportControllerBlock = ({setMonsterReport, sortType}: ArgProps) => 
     const fetchMonsterReportHandler = useCallback(async () => {
         const monsterReport: MonsterReportDTO[]
             = await fetchServerUseQuery(
-                URL.MONSTER_REPORTS + `?monsterTypeId=${monsterTypeId}
+                URLS.MONSTER_REPORTS + `?monsterTypeId=${monsterTypeId}
                                        &sortType=${sortType}
                                        &isAscOrder=${isAscOrder}`
             );

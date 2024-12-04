@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback, useState } from "react";
-import { COLORS, URL } from "../../lib/Constants";
+import { COLORS, URLS } from "../../lib/Constants";
 import Button from "../common/Button";
 import FromToDate from "../common/FromTo";
 import { BattleReportDTO } from "../../types/BattleReport";
@@ -39,7 +39,7 @@ const MonsterReportControllerBlock = ({setBattleReport}: ArgProps) => {
     const fetchBattleReportHandler = useCallback(async () => {
         const battleReport: BattleReportDTO[]
             = await fetchServerUseQuery(
-                  `${URL.BATTLE_REPORTS}?battleScale=${battleScale}
+                  `${URLS.BATTLE_REPORTS}?battleScale=${battleScale}
                                         &from=${from}
                                         &to=${to}`
             );

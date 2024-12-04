@@ -3,7 +3,7 @@ import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useCheckToken } from "../hooks/useHooksOfCommon";
 import { useServerWithQuery } from "../hooks/useHooksOfCommon";
-import { KEYS, URL } from "../lib/Constants";
+import { KEYS, URLS } from "../lib/Constants";
 import { useServerWithJson } from "../hooks/useHooksOfCommon";
 import { useRegistResult } from "../hooks/useHooksOfBattle";
 import { isEmpty } from "../lib/CommonLogic";
@@ -85,7 +85,7 @@ const BattlePage = () => {
    const fecthMonsters = useServerWithQuery();
    const gameStartHandler = useCallback(async (e: any) => {
         const initMonsters = await fecthMonsters(
-            `${URL.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${loginId}`);
+            `${URLS.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${loginId}`);
         setMonsters(initMonsters);
         setMonsterCount(initMonsters.length);
         // 画面切り替え
@@ -99,7 +99,7 @@ const BattlePage = () => {
     const moveMonsters = useServerWithJson();
     const battleHandler = async () => {
         const moveResult =
-            await moveMonsters([...monsters], URL.BATTLE_NEXT_TURN);
+            await moveMonsters([...monsters], URLS.BATTLE_NEXT_TURN);
         setMonsters([...moveResult.Monsters]);
         setBattleLog([...moveResult.BattleLog]);
         setBattleStarted(true);
@@ -133,7 +133,7 @@ const BattlePage = () => {
             monsters, lastLog, setResultLog, setShowResultDialog, insertResult
         });
         if (!isEmpty(lastLog) && lastLog!.WinnerMonsterId > 0) {
-            insertUserResist(`${URL.RECORD_USER_RESULT}?betMonsterId=${betMonster?.MonsterId}
+            insertUserResist(`${URLS.RECORD_USER_RESULT}?betMonsterId=${betMonster?.MonsterId}
                                                        &betGil=${betGil}
                                                        &betRate=${betMonster!.BetRate}
                                                        &winningMonsterId=${lastLog?.WinnerMonsterId}

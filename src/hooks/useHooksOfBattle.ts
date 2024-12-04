@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { URL } from "../lib/Constants";
+import { URLS } from "../lib/Constants";
 import { MetaDataDTO, MonsterDTO } from "../types/MonsterBattle";
 import { isEmpty } from "../lib/CommonLogic";
 
@@ -27,7 +27,7 @@ export const useRegistResult = () => {
         if (lastLog!.ExistWinner || lastLog!.AllLoser) {
             setShowResultDialog(true);
             // 戦績の記録
-            insertResult(monsters, URL.RECORD_BATTLE_RESULT);
+            insertResult(monsters, URLS.RECORD_BATTLE_RESULT);
         }
     }, []);
 

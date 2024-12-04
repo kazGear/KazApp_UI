@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { KEYS, URL } from "../lib/Constants";
+import { useEffect, useState } from "react";
+import { KEYS, URLS } from "../lib/Constants";
 import { useCallback } from "react";
 import { createMonstersJson } from "../lib/CreateJson";
 
@@ -16,7 +16,7 @@ export const useCheckToken = async () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
             }
-            const res = await fetch(`${URL.CHECK_LOGIN_TOKEN}?token=${token}`,option);
+            const res = await fetch(`${URLS.CHECK_LOGIN_TOKEN}?token=${token}`,option);
 
             // 期限切れ
             if (!res.ok) {

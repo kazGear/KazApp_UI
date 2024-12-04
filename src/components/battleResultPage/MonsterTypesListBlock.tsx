@@ -1,7 +1,7 @@
 import { ChangeEvent, useLayoutEffect, useState } from "react";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import Select from "../common/Select";
-import { URL } from "../../lib/Constants";
+import { URLS } from "../../lib/Constants";
 import { MonsterTypeDTO } from "../../types/BattleReport";
 
 interface ArgProps {
@@ -14,7 +14,7 @@ const MonsterTypesListBlock = ({setMonsterTypeId}: ArgProps) => {
 
     useLayoutEffect(() => {
         const fetchTypes = async () => {
-            const types: MonsterTypeDTO[] = await fetchMonsterTypes(URL.INIT_BATTLE_REPORT);
+            const types: MonsterTypeDTO[] = await fetchMonsterTypes(URLS.INIT_BATTLE_REPORT);
             setMonsterTypes(types);
         }
         fetchTypes();

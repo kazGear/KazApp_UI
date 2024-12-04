@@ -1,12 +1,19 @@
 import styled from "styled-components";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import { COLORS, KEYS, URL } from "../../lib/Constants";
+import { COLORS, KEYS, PREFIX, URLS } from "../../lib/Constants";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { isEmpty } from "../../lib/CommonLogic";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { useCheckLogin } from "../../hooks/useHooksOfIndex";
+import { UserDTO } from "../../types/UserManage";
 
+const Simg = styled.img`
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 100%;
+`;
 const Sheader = styled.header`
     height: 5%;
     max-height: 50px;
@@ -19,7 +26,7 @@ const Sheader = styled.header`
 const SdivButtonFrame = styled.div`
     display: flex;
     margin-right: auto;
-    margin-left: 20px;
+    margin-left: 10px;
 `;
 const Sh1 = styled.h1`
     margin: 20px;
@@ -35,7 +42,8 @@ interface ArgProps { title: string; }
 
 const AppHeader = ({title}: ArgProps) => {
     const [loginId, setLoginId] = useState<string | null>("");
-    const [dispName, setDispName] = useState<string | null>("");
+    const [loginUser, setLoginUser] = useState<UserDTO | null>();
+    const [userImage, setUserImage] = useState<string>("");
     const [validToken, setValidToken] = useState(false);
 
     const navigate = useNavigate();
@@ -55,11 +63,12 @@ const AppHeader = ({title}: ArgProps) => {
     const select = useServerWithQuery();
     useEffect(() => {
         const selectName = async () => {
-            const name: string | null = await select(`${URL.SELECT_LOGIN_USER}?loginId=${loginId}`);
-            setDispName(name);
+            const user: UserDTO | null = await select(`${URLS.SELECT_LOGIN_USER}?loginId=${loginId}`);
+            setLoginUser(user);
+            if (user) setUserImage(PREFIX.BASE64 + user.UserImage);
         }
         selectName();
-    }, [loginId, dispName]);
+    }, [loginId, loginUser]);
 
     return (
         <Sheader>
@@ -84,9 +93,12 @@ const AppHeader = ({title}: ArgProps) => {
                         onClick={() => {}}
                         disabled={validToken ? false : true}/>
             </SdivButtonFrame>
-            <div style={{display: "flex"}}>
+            <div style={{display: "flex", alignItems: "center"}}>
                 {
-                    !isEmpty(dispName) ? <Sspan>ようこそ{dispName}さん</Sspan> :""
+                    !isEmpty(loginUser) ? <Simg src={userImage} alt="" /> : ""
+                }
+                {
+                    !isEmpty(loginUser) ? <Sspan>ようこそ{loginUser?.DispName}さん</Sspan> : ""
                 }
                 <Button text="メニューへ"
                         onClick={() => navigate("/")}

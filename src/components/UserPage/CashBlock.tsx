@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { UserDTO } from "../../types/UserManage";
 import Button from "../common/Button";
 import Strong from "../common/Strong";
-import { KEYS, URL } from "../../lib/Constants";
+import { KEYS, URLS } from "../../lib/Constants";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import { useCallback, useLayoutEffect, useState } from "react";
 
@@ -37,7 +37,7 @@ const CashBlock = ({user}: ArgProps) => {
     const update = useServerWithQuery();
     const restartAsPlayer = useCallback(() => {
         const restart = async () => {
-            const result: UserDTO | null = await update(`${URL.RESTART_AS_PLAYER}?loginId=${loginId}`);
+            const result: UserDTO | null = await update(`${URLS.RESTART_AS_PLAYER}?loginId=${loginId}`);
             setCash(result?.Cash ?? null);
             setBankruptcyCnt(result?.BankruptcyCnt ?? null);
         }
