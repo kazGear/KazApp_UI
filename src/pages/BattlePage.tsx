@@ -16,7 +16,7 @@ import MonsterWindowBlock from "../components/battlePage/MonsterWindowBlock";
 
 const SdivOutSideFrame = styled.div`
     position: relative;
-    margin: 20px;
+    margin: 60px 20px 20px 20px;
 `;
 const SdivMonsterWindowFrame = styled.div`
     display: flex;

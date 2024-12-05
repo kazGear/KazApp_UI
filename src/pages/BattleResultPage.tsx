@@ -8,7 +8,7 @@ import BattleReportBlock from "../components/battleResultPage/BattleReportBlock"
 import MonsterReportControllerBlock from "../components/battleResultPage/MonsterReportControllerBlock";
 
 const SdivOutsideFrame = styled.div`
-    margin-top: 10px;
+    margin-top: 60px;
     height: 100%;
 `;
 const SdivOptionFrame = styled.div`

@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Strong from "../common/Strong";
 import monsterImages from "../../lib/MonsterImages";
 import { MonsterDTO } from "../../types/MonsterBattle";
+import { useLayoutEffect, useState } from "react";
+import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
+import { URLS } from "../../lib/Constants";
 
 const SdivMonsters = styled.div`
     height: 100%;
@@ -36,12 +39,28 @@ const Std5 = styled.td`
 
 interface ArgProps {
     monsters: MonsterDTO[] | null;
+    loginId: string | null;
 }
 
-const MonstersBlock = ({monsters}: ArgProps) => {
+const MonstersBlock = ({monsters, loginId}: ArgProps) => {
+    const [getMonsterCount, setGetMonsterCount] = useState<string | null>(null);
+
+    /**
+     * 使用権開放モンスター素の取得
+     */
+    const select = useServerWithQuery();
+    useLayoutEffect(() => {
+        const selectMonsterCount = async () => {
+            const monsterCount: string = await select(URLS.GET_MONSTER_COUNT + `?loginId=${loginId}`);
+            setGetMonsterCount(monsterCount);
+        }
+        selectMonsterCount();
+    }, []);
+
+
     return (
         <SdivMonsters>
-            <Strong>開放モンスター</Strong>
+            <Strong>開放モンスター&emsp;{getMonsterCount}</Strong>
             <Stable>
                 <tbody>
                     { monsters != null ?

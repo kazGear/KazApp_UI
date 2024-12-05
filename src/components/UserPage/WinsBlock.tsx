@@ -4,7 +4,7 @@ import Strong from "../common/Strong";
 
 const SdivWinFrame = styled.div`
     height: 50%;
-    margin: 25px;
+    margin: 20px;
 `;
 
 interface ArgProps {
@@ -14,8 +14,8 @@ interface ArgProps {
 const WinsBlock = ({user}: ArgProps) => {
     return (
         <SdivWinFrame>
-            <p><Strong>的中数</Strong> : {user != null ? user!.Wins : ""} 回</p>
-            <p><Strong>配当金</Strong> : {user != null ? user!.WinsGetCash : ""} Gil</p>
+            <p style={{margin: 0}}><Strong>的中数</Strong> : {user != null ? user!.Wins : ""} 回</p>
+            <p style={{margin: 0}}><Strong>配当金</Strong> : {user != null ? user!.WinsGetCash : ""} Gil</p>
         </SdivWinFrame>
     );
 }

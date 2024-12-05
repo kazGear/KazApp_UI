@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { COLORS, KEYS } from "../lib/Constants";
-import Button from "../components/common/Button";
 import DialogFrame from "../components/common/DialogFrame";
 import { useCallback, useLayoutEffect, useState } from "react";
-import Input from "../components/common/Input";
 import { useLogin } from "../hooks/useHooksOfUser";
 import UserRegistBlock from "../components/loginPage/UserRegistBlock";
 import OutSideFrame from "../components/common/OutSideFrame";
+import InputBlock from "../components/loginPage/InputBlock";
+import ButtonBlock from "../components/loginPage/ButtonBlock";
 
 const LoginContainer = styled.div`
     text-align: center;
@@ -64,32 +64,16 @@ const LoginPage = () => {
             <LoginContainer>
                 <OutSideFrame styleObj={frameStyle} >
                     <form action="" method="post">
-                        <Input
-                            labelTitle="ログインID"
-                            inputType="text"
-                            id="loginId"
-                            name="loginId"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputLoginId(e.target.value)}
-                            />
-                        <Input
-                            labelTitle="パスワード"
-                            inputType="password"
-                            id="password"
-                            name="password"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputPassword(e.target.value)}
-                            />
+                        <InputBlock setInputLoginId={setInputLoginId}
+                                    setInputPassword={setInputPassword}
+                         />
                         {
-                            showAlert ? <Sspan>入力に誤りがあるか、無効なユーザーです。。</Sspan> : ""
+                            showAlert ? <Sspan>入力に誤りがあるか、無効なユーザーです。</Sspan> : ""
                         }
                         <br />
-                        <div>
-                            <Button text="ログイン" onClick={loginHandler}/>
-                            <br/>
-                            <Button text="ユーザー登録がお済でない方"
-                                    onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => setShowRegistForm(!showRegistForm)}
-                                    styleObj={{width: "220px", marginTop: "15px"}}
-                            />
-                        </div>
+                        <ButtonBlock loginHandler={loginHandler}
+                                     setShowRegistForm={setShowRegistForm}
+                                     showRegistForm={showRegistForm}/>
                     </form>
                 </OutSideFrame>
             </LoginContainer>

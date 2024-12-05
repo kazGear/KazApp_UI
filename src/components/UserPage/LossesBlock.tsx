@@ -4,7 +4,7 @@ import Strong from "../common/Strong";
 
 const SdivLose = styled.div`
     height: 50%;
-    margin: 25px;
+    margin: 20px;
 `;
 
 interface ArgProps {
@@ -14,8 +14,8 @@ interface ArgProps {
 const LossesBlock = ({user}: ArgProps) => {
     return (
         <SdivLose>
-            <p><Strong>敗北数</Strong> : {user != null ? user!.Losses : ""} 回</p>
-            <p><Strong>損失</Strong> : {user != null ? user!.LossesLostCash : ""} Gil</p>
+            <p style={{margin: 0}}><Strong>敗北数</Strong> : {user != null ? user!.Losses : ""} 回</p>
+            <p style={{margin: 0}}><Strong>損失</Strong> : {user != null ? user!.LossesLostCash : ""} Gil</p>
         </SdivLose>
     );
 }

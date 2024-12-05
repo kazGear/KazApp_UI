@@ -11,7 +11,7 @@ const Slink = styled(Link)`
 `;
 const SdivLinkFrame = styled.div`
     width: 80%;
-    margin: 40px auto;
+    margin: 80px auto;
 `;
 const SpDescription = styled.p`
     margin: 0 0 0 40px;
@@ -75,21 +75,21 @@ const IndexPage = () => {
                 </SpDescription>
 
                 <Slink to={validToken ? "/" : ""} >
-                    <MenuTitle title={"各種設定（ 工事中 ）"}
-                               className={validToken ? classOfAnime : ""}
-                               styleObj={validToken ? {} : titleStyle}/>
-                </Slink>
-                <SpDescription>
-                    制作予定・・・ モンスターデータ編集、モンスター所持スキル編集、スキル編集、ユーザー編集・・・
-                </SpDescription>
-
-                <Slink to={validToken ? "/" : ""} >
                     <MenuTitle title={"ショップ（ 工事中 ）"}
                                className={validToken ? classOfAnime : ""}
                                styleObj={validToken ? {} : titleStyle}/>
                 </Slink>
                 <SpDescription>
                     制作予定・・・ モンスターセット、スキルセットの開放、アイテム ...
+                </SpDescription>
+
+                <Slink to={validToken ? "/" : ""} >
+                    <MenuTitle title={"各種設定（ 工事中 ）"}
+                               className={validToken ? classOfAnime : ""}
+                               styleObj={validToken ? {} : titleStyle}/>
+                </Slink>
+                <SpDescription>
+                    制作予定・・・ モンスターデータ編集、モンスター所持スキル編集、スキル編集、ユーザー編集・・・
                 </SpDescription>
 
                 <p>※スマホ非対応、Chrome, edge推奨。</p>

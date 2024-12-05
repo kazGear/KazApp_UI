@@ -14,6 +14,7 @@ import OutSideFrame from "../components/common/OutSideFrame";
 import ImgUpload from "../components/common/ImgUpload";
 
 const SdivPageFrame = styled.div`
+    margin-top: 40px;
     display: flex;
     height: 100%;
 `;
@@ -26,8 +27,13 @@ const SdivPageR = styled.div`
     width: 50%;
     height: 565px;
 `;
-
-const frameStyle: React.CSSProperties = {
+const cashStyle: React.CSSProperties = {
+    margin: "20px",
+    height: "110px",
+    minWidth: "100px",
+    overflow: "hidden"
+}
+const monstersStyle: React.CSSProperties = {
     margin: "20px",
     height: "100%",
     minWidth: "100px",
@@ -40,7 +46,7 @@ const iconStyle: React.CSSProperties = {
 }
 const winAndLoseStyle: React.CSSProperties = {
     margin: "20px",
-    height: "100px"
+    height: "80px"
 }
 
 const UserPage = () => {
@@ -73,7 +79,7 @@ const UserPage = () => {
                     <UserIdsBlock user={user} />
                     <ImgUpload styleObj={{width: "110px"}} />
                 </OutSideFrame>
-                <OutSideFrame styleObj={frameStyle}>
+                <OutSideFrame styleObj={cashStyle}>
                     <CashBlock user={user} />
                 </OutSideFrame>
                 <OutSideFrame styleObj={winAndLoseStyle}>
@@ -84,8 +90,8 @@ const UserPage = () => {
                 </OutSideFrame>
             </SdivPageL>
             <SdivPageR>
-                <OutSideFrame styleObj={frameStyle}>
-                    <MonstersBlock monsters={monsters}/>
+                <OutSideFrame styleObj={monstersStyle}>
+                    <MonstersBlock monsters={monsters} loginId={loginId}/>
                 </OutSideFrame>
             </SdivPageR>
         </SdivPageFrame>

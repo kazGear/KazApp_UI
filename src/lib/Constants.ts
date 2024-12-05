@@ -76,6 +76,7 @@ export const URLS = {
     RECORD_USER_RESULT: `${ENVIRONMENT}/api/user/recordUserResults`,
     REGIST_USER: `${ENVIRONMENT}/api/user/userRegist`,
     RESTART_AS_PLAYER: `${ENVIRONMENT}/api/user/restartAsPlayer`,
+    GET_MONSTER_COUNT: `${ENVIRONMENT}/api/user/getMonsterCount`,
     // バトル、モンスター関係
     INIT_MONSTERS: `${ENVIRONMENT}/api/battle/init`,
     BET_RATE: `${ENVIRONMENT}/api/battle/betRate`,

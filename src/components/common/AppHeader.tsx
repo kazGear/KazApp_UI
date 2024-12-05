@@ -15,13 +15,18 @@ const Simg = styled.img`
     border-radius: 100%;
 `;
 const Sheader = styled.header`
-    height: 5%;
+    width: 100%;
+    height: 50px;
     max-height: 50px;
     box-shadow: 0px 0px 10px 0px #000000;
     text-align: left;
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 2000;
 `;
 const SdivButtonFrame = styled.div`
     display: flex;
@@ -95,18 +100,16 @@ const AppHeader = ({title}: ArgProps) => {
             </SdivButtonFrame>
             <div style={{display: "flex", alignItems: "center"}}>
                 {
-                    !isEmpty(loginUser) ? <Simg src={userImage} alt="" /> : ""
+                    !isEmpty(loginUser) && loginUser!.UserImage!.length > 50 ? <Simg src={userImage} alt="" /> : ""
                 }
                 {
                     !isEmpty(loginUser) ? <Sspan>ようこそ{loginUser?.DispName}さん</Sspan> : ""
                 }
-                <Button text="メニューへ"
-                        onClick={() => navigate("/")}
-                        styleObj={{
-                            marginRight: "20px",
-                            position: "relative",
-                            zIndex: 5000
-                        }}
+                <Button text="メニューへ" onClick={() => navigate("/")} styleObj={{
+                    marginRight: "20px",
+                    position: "relative",
+                    zIndex: 5000
+                }}
                 />
             </div>
         </Sheader>
