@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import "./sanitize.css" // TODO 導入予定
 import './index.css';
 import "./animation.css"
 import App from './App';
