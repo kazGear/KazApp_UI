@@ -15,11 +15,14 @@ export const COLORS = {
 
     SHADOW_COLOR: "#132c0d",
     DIALOG_SHADOW: "gray",
+    MENU_SHADOW: "gray",
 
     BUTTON_COLOR: `${ACCENT_COLOR}`,
     BUTTON_DISABLED: 0.3,
 
     THEME_COLOR: "#7fffd4",
+
+    MENU_DISABLED: "darkgray",
 
     DIALOG_FRAME: `${ACCENT_COLOR}`,
 } as const;
