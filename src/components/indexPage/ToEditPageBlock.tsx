@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS } from "../../lib/Constants";
 import MenuTitle from "../common/MenuTitle";
+import OutSideFrame from "../common/OutSideFrame";
 
 const Slink = styled(Link)`
     text-decoration: none;
@@ -25,9 +26,12 @@ const ToEditPageBlock = ({validToken, classOfAnime, titleStyle}: ArgProps) => {
                         className={validToken ? classOfAnime : ""}
                         styleObj={validToken ? {} : titleStyle}/>
             </Slink>
-            <SpDescription>
-                制作予定・・・ モンスターデータ編集、モンスター所持スキル編集、スキル編集、ユーザー編集・・・
-            </SpDescription>
+
+            <OutSideFrame>
+                <SpDescription>
+                    制作予定・・・ モンスターデータ編集、モンスター所持スキル編集、スキル編集、ユーザー編集・・・
+                </SpDescription>
+            </OutSideFrame>
         </div>
     );
 }

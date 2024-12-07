@@ -18,22 +18,23 @@ interface ArgProps {
     titleStyle: {}
 }
 
-const ToShopPageBlock = ({validToken, classOfAnime, titleStyle}: ArgProps) => {
+const ToBattleResultPageBlock = ({validToken, classOfAnime, titleStyle}: ArgProps) => {
     return (
         <div>
-            <Slink to={validToken ? "/ShopPage" : ""} >
-                <MenuTitle title={"ショップ"}
+            <Slink to={validToken ? "/BattleReportPage" : "/"} >
+                <MenuTitle title={"モンスター闘技場"}
                         className={validToken ? classOfAnime : ""}
                         styleObj={validToken ? {} : titleStyle}/>
             </Slink>
 
             <OutSideFrame>
                 <SpDescription>
-                    制作予定・・・ モンスターセット、スキルセットの開放、アイテム ...
+                    某RPGカジノ風のモンスター闘技場です。どのモンスターが勝ち残るか当ててみてください。<br/>
+                    ※バッチ処理でも毎晩強制的に戦わされています。
                 </SpDescription>
             </OutSideFrame>
         </div>
     );
 }
 
-export default ToShopPageBlock;
+export default ToBattleResultPageBlock;

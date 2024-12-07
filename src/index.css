@@ -9,6 +9,9 @@ body {
   color:gray;
   height: 100vh;
   overflow: hidden;
+  background: url("./images/background/base.png");
+  background-size: cover;
+
 }
 
 code {

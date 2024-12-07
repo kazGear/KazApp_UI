@@ -6,6 +6,7 @@ import { BattleReportDTO } from "../../types/BattleReport";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import styled from "styled-components";
 import BattleScaleListBlock from "./BattleScaleListBlock";
+import OutSideFrame from "../common/OutSideFrame";
 
 
 const Sh1Title = styled.h1`
@@ -47,30 +48,32 @@ const MonsterReportControllerBlock = ({setBattleReport}: ArgProps) => {
     }, [battleScale, from, to]);
 
     return (
-        <div>
-            <Sh1Title>戦闘結果</Sh1Title>
-            <BattleScaleListBlock
-                changeBattleScaleHandler={changeBattleScaleHandler}
-            />
-            <FromToDate
-                labelText="期間"
-                setDisable={setDisable}
-                from={from}
-                setFrom={setFrom}
-                to={to}
-                setTo={setTo}
-            />
-            <Button
-                text="検索"
-                onClick={fetchBattleReportHandler}
-                disabled={disable}
-                styleObj={{
-                    position: "absolute",
-                    bottom: "0",
-                    right: "0",
-                }}
-            />
-        </div>
+        <OutSideFrame>
+            <div style={{margin: "0 0 10px 20px"}}>
+                <Sh1Title>戦闘結果</Sh1Title>
+                <BattleScaleListBlock
+                    changeBattleScaleHandler={changeBattleScaleHandler}
+                />
+                <FromToDate
+                    labelText="期間"
+                    setDisable={setDisable}
+                    from={from}
+                    setFrom={setFrom}
+                    to={to}
+                    setTo={setTo}
+                />
+                <Button
+                    text="検索"
+                    onClick={fetchBattleReportHandler}
+                    disabled={disable}
+                    styleObj={{
+                        position: "absolute",
+                        bottom: "0",
+                        right: "0",
+                    }}
+                />
+            </div>
+        </OutSideFrame>
     );
 }
 

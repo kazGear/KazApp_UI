@@ -6,6 +6,7 @@ import { useCheckToken } from "../hooks/useHooksOfCommon";
 import BattleReportControllerBlock from "../components/battleResultPage/BattleReportControllerBlock";
 import BattleReportBlock from "../components/battleResultPage/BattleReportBlock";
 import MonsterReportControllerBlock from "../components/battleResultPage/MonsterReportControllerBlock";
+import { COLORS } from "../lib/Constants";
 
 const SdivOutsideFrame = styled.div`
     margin-top: 60px;
@@ -35,11 +36,13 @@ const SdivReportL = styled.div`
     width: 55%;
     max-height: 430px;
     overflow-y: scroll;
+    background: ${COLORS.BASE_BACKGROUND};
 `;
 const SdivReportR = styled.div`
     width: 35%;
     max-height: 430px;
     overflow-y: scroll;
+    background: ${COLORS.BASE_BACKGROUND};
 `;
 
 const BattleResultPage = () => {
@@ -55,8 +58,9 @@ const BattleResultPage = () => {
                 {/* 検索条件部 */}
                 <SdivOptionL>
                     <BattleReportControllerBlock setMonsterReport={setMonsterReport}
-                                            sortType={sortType}/>
+                                                 sortType={sortType}/>
                 </SdivOptionL>
+
                 {/* 検索条件部 */}
                 <SdivOptionR>
                     <MonsterReportControllerBlock setBattleReport={setBattleReport}/>

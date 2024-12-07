@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { COLORS } from "../../lib/Constants";
 
+
 const Sdiv = styled.div`
     border: solid 1px ${COLORS.BORDER_COLOR};
-    box-shadow: 2px 2px ${COLORS.SHADOW_COLOR};
+    box-shadow: 4px 4px ${COLORS.SHADOW_COLOR};
     overflow: overlay;
+    background: ${COLORS.BASE_BACKGROUND};
 `;
 
 interface ArgProps {

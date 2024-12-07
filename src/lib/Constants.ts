@@ -21,6 +21,8 @@ export const COLORS = {
     BUTTON_DISABLED: 0.3,
 
     THEME_COLOR: "#7fffd4",
+    BASE_BACKGROUND: "white",
+
 
     MENU_DISABLED: "darkgray",
 

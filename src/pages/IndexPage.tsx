@@ -1,26 +1,17 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import MenuTitle from "../components/common/MenuTitle";
 import { useState } from "react";
 import { COLORS } from "../lib/Constants";
 import { useCheckLogin } from "../hooks/useHooksOfIndex";
 import ToLoginPageBlock from "../components/indexPage/ToLoginPageBlock";
 import ToUserPageBlock from "../components/indexPage/ToUserPageBlock";
-import ToBattlePageBlock from "../components/indexPage/ToBattlePageBlock[";
-import ToBattleResultPageBlock from "../components/indexPage/ToBattlePageBlock[";
+import ToBattlePageBlock from "../components/indexPage/ToBattlePageBlock";
+import ToBattleResultPageBlock from "../components/indexPage/ToBattleResultPageBlock";
 import ToShopPageBlock from "../components/indexPage/ToShopPageBlock";
 import ToEditPageBlock from "../components/indexPage/ToEditPageBlock";
 
-const Slink = styled(Link)`
-    text-decoration: none;
-    color: gray;
-`;
 const SdivLinkFrame = styled.div`
     width: 90%;
     margin: 60px auto;
-`;
-const SpDescription = styled.p`
-    margin: 0 0 0 40px;
 `;
 const SdivContentsFrame = styled.div`
     width: 50%;
@@ -79,11 +70,11 @@ const IndexPage = () => {
                     <SdivContentsFrame>
                        <ToEditPageBlock validToken={validToken}
                                         classOfAnime={classOfAnime}
-                                        titleStyle={titleStyle}/>
+                                         titleStyle={titleStyle}/>
                     </SdivContentsFrame>
                 </div>
 
-                <p>※スマホ非対応、Chrome, edge推奨。</p>
+                <p style={{color: `${COLORS.ACCENT_FONT_COLOR2}`}}>※スマホ非対応、Chrome, edge推奨。</p>
             </SdivLinkFrame>
         </>
     );

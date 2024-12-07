@@ -18,6 +18,7 @@ const SimgMonster = styled.img`
     position: relative;
     width: 130px;
     height: 130px;
+    border-radius: 100%;
 `;
 interface SimgEffectProp { display: string; }
 const SimgEffect = styled.img<SimgEffectProp>`

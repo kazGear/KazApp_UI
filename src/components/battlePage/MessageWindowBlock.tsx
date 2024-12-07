@@ -7,6 +7,7 @@ const SdivMessageWindowFrame = styled.div`
     height: 180px;
     border: inset 4px ${COLORS.BORDER_COLOR};
     overflow-y: scroll;
+    background: ${COLORS.BASE_BACKGROUND};
 `;
 const SdivMessageWindow = styled.div`
     margin: 10px;

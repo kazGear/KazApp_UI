@@ -93,9 +93,13 @@ const AppHeader = ({title}: ArgProps) => {
                         width={120}
                         onClick={() => navigate("/UserPage")}
                         disabled={validToken ? false : true}/>
-                <Button text="工事中"
-                        width={60}
-                        onClick={() => {}}
+                <Button text="ログイン"
+                        width={80}
+                        onClick={() => navigate("/LoginPage")}
+                        disabled={validToken ? false : true}/>
+                <Button text="ショップ"
+                        width={80}
+                        onClick={() => navigate("/ShopPage")}
                         disabled={validToken ? false : true}/>
             </SdivButtonFrame>
             <div style={{display: "flex", alignItems: "center"}}>

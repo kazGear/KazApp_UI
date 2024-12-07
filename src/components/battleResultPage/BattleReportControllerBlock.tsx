@@ -6,7 +6,11 @@ import { useCallback, useState } from "react";
 import { MonsterReportDTO } from "../../types/BattleReport";
 import { useServerWithQuery } from "../../hooks/useHooksOfCommon";
 import MonsterTypesListBlock from "./MonsterTypesListBlock";
+import OutSideFrame from "../common/OutSideFrame";
 
+const SdivOutSideFrame = styled.div`
+
+`;
 const Sh1Title = styled.h1`
     font-size: 16px;
     color: ${COLORS.CAPTION_FONT_COLOR};
@@ -48,23 +52,25 @@ const BattleReportControllerBlock = ({setMonsterReport, sortType}: ArgProps) => 
     }, [monsterTypeId, sortType, isAscOrder]);
 
     return (
-        <div>
-            <Sh1Title>モンスター戦績</Sh1Title>
-            <MonsterTypesListBlock setMonsterTypeId={setMonsterTypeId} />
-            <Select title="ソート順" onChange={sortHandler}>
-                <option value={KEYS.ORDER_BY_ASC}>昇順</option>
-                <option value={KEYS.ORDER_BY_DESC}>降順</option>
-            </Select>
-            <Button
-                text="検索"
-                onClick={fetchMonsterReportHandler}
-                styleObj={{
-                    position: "absolute",
-                    bottom: "0",
-                    right: "0",
-                }}
-            />
-        </div>
+        <OutSideFrame>
+            <div style={{margin: "0 0 0 20px"}}>
+                <Sh1Title>モンスター戦績</Sh1Title>
+                <MonsterTypesListBlock setMonsterTypeId={setMonsterTypeId} />
+                <Select title="ソート順" onChange={sortHandler}>
+                    <option value={KEYS.ORDER_BY_ASC}>昇順</option>
+                    <option value={KEYS.ORDER_BY_DESC}>降順</option>
+                </Select>
+                <Button
+                    text="検索"
+                    onClick={fetchMonsterReportHandler}
+                    styleObj={{
+                        position: "absolute",
+                        bottom: "0",
+                        right: "0",
+                    }}
+                />
+            </div>
+        </OutSideFrame>
     );
 };
 
