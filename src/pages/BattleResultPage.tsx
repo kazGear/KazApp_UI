@@ -16,7 +16,7 @@ const SdivOptionFrame = styled.div`
     display: flex;
     justify-content: space-around;
     height: 140px;
-    margin: 0 20px 20px 20px;
+    margin: 0 0 20px 0;
 `;
 const SdivOptionL = styled.div`
     width: 55%;

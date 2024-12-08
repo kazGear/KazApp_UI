@@ -4,7 +4,7 @@ export interface MonsterTypeDTO {
 }
 
 export interface MonsterReportDTO {
-    MonsterId: number;
+    MonsterId: string;
     MonsterName: string;
     BattleCount: number;
     Wins: number;
@@ -18,7 +18,7 @@ export interface BattleReportDTO {
     BattleEndTime: string;
     BattleEndTimeStr: string;
     Serial: number;
-    MonsterId: number;
+    MonsterId: string;
     MonsterName: string;
     IsWin: boolean;
 }

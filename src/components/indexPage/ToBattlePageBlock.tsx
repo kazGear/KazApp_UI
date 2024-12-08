@@ -21,7 +21,7 @@ interface ArgProps {
 const ToBattleResultPageBlock = ({validToken, classOfAnime, titleStyle}: ArgProps) => {
     return (
         <div>
-            <Slink to={validToken ? "/BattleReportPage" : "/"} >
+            <Slink to={validToken ? "/BattlePage" : "/"} >
                 <MenuTitle title={"モンスター闘技場"}
                         className={validToken ? classOfAnime : ""}
                         styleObj={validToken ? {} : titleStyle}/>

@@ -23,7 +23,6 @@ export const COLORS = {
     THEME_COLOR: "#7fffd4",
     BASE_BACKGROUND: "white",
 
-
     MENU_DISABLED: "darkgray",
 
     DIALOG_FRAME: `${ACCENT_COLOR}`,

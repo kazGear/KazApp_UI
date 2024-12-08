@@ -7,6 +7,7 @@ const Sdiv = styled.div`
     box-shadow: 4px 4px ${COLORS.SHADOW_COLOR};
     overflow: overlay;
     background: ${COLORS.BASE_BACKGROUND};
+    border-radius: 10px 0 10px 0
 `;
 
 interface ArgProps {

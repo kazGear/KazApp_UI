@@ -1,21 +1,21 @@
 export interface MetaDataDTO {
-    TargetMonsterId: number;
+    TargetMonsterId: string;
     BeforeHp: number;
     ImpactPoint: number;
     StateName: string;
     EnableState: boolean;
     DisableState: boolean;
-    SkillId: number;
+    SkillId: string;
     Message: string;
     IsStop: boolean;
     AllLoser: boolean;
     ExistWinner: boolean;
-    WinnerMonsterId: number;
+    WinnerMonsterId: string;
     WinnerMonsterName: string;
 }
 
 export interface MonsterDTO {
-    MonsterId: number;
+    MonsterId: string;
     MonsterName?: string;
     MonsterType: number;
     Hp: number;
@@ -31,7 +31,7 @@ export interface MonsterDTO {
 }
 
 export interface SkillDTO {
-    SkillId: number;
+    SkillId: string;
     SkillName: string;
     SkillType: number;
     ElementType: number;
@@ -44,7 +44,7 @@ export interface SkillDTO {
 }
 
 export interface StateDTO {
-    Category: number;
+    CodeId: string;
     StateType: number;
     Name: string;
     MaxDuration: number;

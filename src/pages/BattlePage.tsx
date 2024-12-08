@@ -84,7 +84,7 @@ const BattlePage = () => {
     */
    const fecthMonsters = useServerWithQuery();
    const gameStartHandler = useCallback(async (e: any) => {
-        const initMonsters = await fecthMonsters(
+        const initMonsters: MonsterDTO[] = await fecthMonsters(
             `${URLS.INIT_MONSTERS}?selectMonstersCount=${selectMonstersCount.current}&loginId=${loginId}`);
         setMonsters(initMonsters);
         setMonsterCount(initMonsters.length);
@@ -98,6 +98,8 @@ const BattlePage = () => {
     */
     const moveMonsters = useServerWithJson();
     const battleHandler = async () => {
+        // console.log("この後400 ??");
+        // console.log(monsters);
         const moveResult =
             await moveMonsters([...monsters], URLS.BATTLE_NEXT_TURN);
         setMonsters([...moveResult.Monsters]);
@@ -132,7 +134,7 @@ const BattlePage = () => {
         insertBattleResult({
             monsters, lastLog, setResultLog, setShowResultDialog, insertResult
         });
-        if (!isEmpty(lastLog) && lastLog!.WinnerMonsterId > 0) {
+        if (!isEmpty(lastLog) && !isEmpty(lastLog!.WinnerMonsterId)) {
             insertUserResist(`${URLS.RECORD_USER_RESULT}?betMonsterId=${betMonster?.MonsterId}
                                                        &betGil=${betGil}
                                                        &betRate=${betMonster!.BetRate}

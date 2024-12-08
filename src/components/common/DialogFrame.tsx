@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { COLORS } from "../../lib/Constants";
-import imageL from "../../images/background/messageFrameL.png";
-import imageR from "../../images/background/messageFrameR.png";
 
 const SdivDialogFrame = styled.div`
     background-color: ${COLORS.DIALOG_FRAME};
@@ -75,13 +73,13 @@ const DialogFrame = (
     return (
         <>
             <SdivDialogFrame style={{display: showDialog ? "block" : "none"}}>
-                <SimgL src={imageL} alt="ツタ"></SimgL>
+                {/* <SimgL src={imageL} alt="ツタ"></SimgL> */}
                 <SdivInnerFrame>
                     <SdivMessageArea>
                         {renderChild()}
                     </SdivMessageArea>
                 </SdivInnerFrame>
-                <SimgR src={imageR} alt="ツタ"></SimgR>
+                {/* <SimgR src={imageR} alt="ツタ"></SimgR> */}
             </SdivDialogFrame>
 
             <SdivFilter style={{display: showDialog ? "block" : "none"}}/>
